@@ -3,6 +3,8 @@ import { graphql } from "gatsby";
 
 import { HomeHeader } from "../components/sections/imageSections/PageHeaderImage";
 import { HomeHeaderContentSection } from "../components/sections/contentSections/HomeHeaderContent";
+import { PostHeadlineImageSection } from "../components/sections/imageSections/PostHeadlineImageSection";
+import { CallOutSection } from "../components/sections/CallOutSection";
 import { GatsbyImage } from "../types/images";
 
 interface HomeData {
@@ -24,6 +26,8 @@ const IndexPage: React.FC<HomeData> = ({ data }) => {
         titleTag="This Time Fitness"
       />
       <HomeHeaderContentSection />
+      <PostHeadlineImageSection />
+      <CallOutSection />
     </main>
   );
 };

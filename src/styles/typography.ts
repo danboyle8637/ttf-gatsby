@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { sizes } from "./sizes";
 
 const commonHeadlineStyles = css``;
 
@@ -22,8 +23,37 @@ export const LogoSubheadline = styled.h1`
 export const MainPageHeadline = styled.h2`
   font-size: 2.8rem;
   background: linear-gradient(to right, var(--base-white), var(--accent-blue));
-  line-height: 1.6;
+  line-height: 1.4;
   ${gradientHeadlineStyles}
+  ${sizes.aboveMobile} {
+    font-size: 3rem;
+  }
+  ${sizes.aboveTablet} {
+    font-size: 3.4rem;
+  }
+  ${sizes.aboveIpadPro} {
+    font-size: 3.8rem;
+  }
 `;
 
-export const ShoutHeadline = styled.h3``;
+const commonCallOutHeadlineStyles = css`
+  color: var(--call-out-color, var(--base-white));
+  text-transform: uppercase;
+  line-height: 1;
+`;
+
+export const CallOutHeadlineSmall = styled.h3`
+  font-size: 5.3rem;
+  ${commonCallOutHeadlineStyles}
+  ${sizes.aboveTablet} {
+    font-size: 6.3rem;
+  }
+`;
+
+export const CallOutHeadlineLarge = styled.h3`
+  font-size: 7rem;
+  ${commonCallOutHeadlineStyles}
+  ${sizes.aboveTablet} {
+    font-size: 8rem;
+  }
+`;

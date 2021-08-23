@@ -6,6 +6,7 @@ import { HeaderLogo } from "./HeaderLogo";
 import { ImageOverlay } from "../../../styles/images";
 import { Triangle } from "../../cssDrawings/Triangle";
 import { useMatchMedia } from "../../../hooks/useMatchMedia";
+import { sizes } from "../../../styles/sizes";
 
 interface HomeHeaderProps {
   mobileImage: IGatsbyImageData;
@@ -20,14 +21,18 @@ const ImageContainer = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   width: 100%;
+  max-width: 1440px;
   isolation: isolate;
   z-index: -1;
+  overflow: hidden;
+  ${sizes.aboveLaptop} {
+    border-radius: 0 20px 20px 20px;
+  }
 `;
 
 const HeaderImage = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  overflow: hidden;
 `;
 
 const TriangleContainer = styled.div`
@@ -35,7 +40,7 @@ const TriangleContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 `;
 
 export const HomeHeader: React.FC<HomeHeaderProps> = ({

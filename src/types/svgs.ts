@@ -10,3 +10,5 @@ export interface GradientSVGProps {
   className?: string;
   gradientId: string;
 }
+
+export type IconType = "clock" | "email" | "location" | "phone";

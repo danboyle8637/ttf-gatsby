@@ -32,15 +32,17 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
   fieldset {
     border-color: rgba(0,0,0,0.1);
     border-width: 1px;
   }
-
-  /* .gatsby-image-wrapper img[src*=base64\\,] {
-    image-rendering: -moz-crisp-edges;
-    image-rendering: pixelated;
-  } */
 
   /* Scrollbar Styles */
   body::-webkit-scrollbar {
