@@ -16,3 +16,14 @@ export interface DoubleImageSectionData {
     };
   };
 }
+
+export interface HeaderImage {
+  mobileImage: GatsbyImage;
+  aboveMobileImage: GatsbyImage;
+  headline: {
+    frontmatter: {
+      headline1: string;
+      headline2: string;
+    };
+  };
+}

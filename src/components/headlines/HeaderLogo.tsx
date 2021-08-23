@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { TTFLogo } from "../../svgs/TTFLogo";
-import { LogoSubheadline } from "../../../styles/typography";
-import { sizes } from "../../../styles/sizes";
+import { TTFLogo } from "../svgs/TTFLogo";
+import { LogoSubheadline } from "../../styles/typography";
+import { sizes } from "../../styles/sizes";
 
 const LogoContainer = styled.div`
   width: 100%;

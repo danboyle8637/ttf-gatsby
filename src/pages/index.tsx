@@ -5,6 +5,7 @@ import { HomeHeader } from "../components/sections/imageSections/PageHeaderImage
 import { HomeHeaderContentSection } from "../components/sections/contentSections/HomeHeaderContent";
 import { PostHeadlineImageSection } from "../components/sections/imageSections/PostHeadlineImageSection";
 import { CallOutSection } from "../components/sections/CallOutSection";
+import { InStudioWorkoutSection } from "../components/sections/InStudioWorkoutsSection";
 import { GatsbyImage } from "../types/images";
 
 interface HomeData {
@@ -28,6 +29,7 @@ const IndexPage: React.FC<HomeData> = ({ data }) => {
       <HomeHeaderContentSection />
       <PostHeadlineImageSection />
       <CallOutSection />
+      <InStudioWorkoutSection />
     </main>
   );
 };
