@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import { MainPageHeadline } from "../../../styles/typography";
 import { PrimaryButton } from "../../buttons/PrimaryButton";
-import { HeadlineContent } from "../../../types/content";
+import { HeaderSectionHeadlineContent } from "../../../types/content";
 import { sizes } from "../../../styles/sizes";
 
 const SectionContainer = styled.div`
@@ -22,7 +22,7 @@ const SectionContainer = styled.div`
 `;
 
 export const HomeHeaderContentSection = () => {
-  const data: HeadlineContent = useStaticQuery(graphql`
+  const data: HeaderSectionHeadlineContent = useStaticQuery(graphql`
     {
       markdownRemark(frontmatter: { title: { eq: "home-header-sequence" } }) {
         frontmatter {

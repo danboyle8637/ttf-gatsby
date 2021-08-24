@@ -1,4 +1,4 @@
-export interface HeadlineContent {
+export interface HeaderSectionHeadlineContent {
   markdownRemark: {
     frontmatter: {
       headline1: string;
@@ -15,5 +15,13 @@ export interface ContactContent {
       phoneNumber: string;
       emailAddress: string;
     };
+  };
+}
+
+// export interface HeadlineContent {}
+
+export interface MarkdownContent {
+  content: {
+    html: string;
   };
 }

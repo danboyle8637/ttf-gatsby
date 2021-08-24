@@ -25,7 +25,7 @@ const HeadlineStack = styled.div`
   }
 `;
 
-export const SectionHeadline: React.FC = ({ children }) => {
+export const DiagonalSectionHeadline: React.FC = ({ children }) => {
   return (
     <LogoContainer>
       <HeadlineStack>{children}</HeadlineStack>

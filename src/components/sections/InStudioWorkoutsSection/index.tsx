@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { SectionHeaderImage } from "../../images/SectionHeaderImage";
 import { Headline } from "./Headline";
 import { HeaderImage } from "../../../types/images";
+import { ContentSection } from "./ContentSection";
 
 export const InStudioWorkoutSection = () => {
   const data: HeaderImage = useStaticQuery(graphql`
@@ -46,6 +47,7 @@ export const InStudioWorkoutSection = () => {
         altTag="Group of members doing step ups on a box"
         titleTag="Steps Ups On a Box"
       />
+      <ContentSection />
     </>
   );
 };

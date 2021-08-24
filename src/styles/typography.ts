@@ -57,3 +57,10 @@ export const CallOutHeadlineLarge = styled.h3`
     font-size: 8rem;
   }
 `;
+
+export const TestimonialHeadline = styled.h4`
+  font-size: 2.4rem;
+  color: var(--headline-color, var(--base-white));
+  text-transform: capitalize;
+  line-height: 1.4;
+`;

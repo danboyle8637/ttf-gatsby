@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     --dark-blue: hsl(227, 30%, 18%);
     --medium-blue: hsl(227, 30%, 34%);
+    --accent-blue-dark: hsl(226, 27%, 10%);
     --accent-blue: hsl(193, 91%, 56%);
     --accent-pink: hsl(300, 89%, 64%);
     --dark-purple: hsl(258, 41%, 34%);
@@ -91,7 +92,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   strong {
-    color: var(--dark-purple);
+    font-weight: 700;
+    color: #D564CD;
   }
 
   a {
@@ -103,9 +105,34 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
-  li, ol {
+  ul, ol {
+    margin: 0;
+    padding: 40px 0 0 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 40px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.7rem;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    font-size: var(--list-font-size, 1.7rem);
+    line-height: 1.8;
+    color: var(--list-color, var(--text-white));
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      background-image: url("/svgs/kettlebell-bullet-point.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+      transform: translate(-140%, 20%);
+    }
     ${sizes.aboveTablet} {
       font-size: 2rem;
     }

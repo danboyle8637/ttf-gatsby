@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { MainPageHeadline } from "../../../styles/typography";
-import { SectionHeadline } from "../../headlines/SectionHeadline";
+import { DiagonalSectionHeadline } from "../../content/DiagonalSectionHeadline";
 
 interface HeadlineProps {
   headline1: string;
@@ -10,9 +10,9 @@ interface HeadlineProps {
 
 export const Headline: React.FC<HeadlineProps> = ({ headline1, headline2 }) => {
   return (
-    <SectionHeadline>
+    <DiagonalSectionHeadline>
       <MainPageHeadline>{headline1}</MainPageHeadline>
       <MainPageHeadline>{headline2}</MainPageHeadline>
-    </SectionHeadline>
+    </DiagonalSectionHeadline>
   );
 };
