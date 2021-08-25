@@ -1,3 +1,5 @@
+import { GatsbyImage } from "./images";
+
 export interface HeaderSectionHeadlineContent {
   markdownRemark: {
     frontmatter: {
@@ -23,5 +25,14 @@ export interface ContactContent {
 export interface MarkdownContent {
   content: {
     html: string;
+  };
+}
+
+export interface Testimonial {
+  id: string;
+  html: string;
+  frontmatter: {
+    headline: string;
+    image: GatsbyImage;
   };
 }

@@ -9,17 +9,19 @@ interface HomeHeaderProps {
   aboveMobileImage: IGatsbyImageData;
   altTag: string;
   titleTag: string;
+  tagline: string;
 }
 
-export const HomeHeader: React.FC<HomeHeaderProps> = ({
+export const PageHeaderImage: React.FC<HomeHeaderProps> = ({
   mobileImage,
   aboveMobileImage,
   altTag,
   titleTag,
+  tagline,
 }) => {
   return (
     <>
-      <HeaderLogo />
+      <HeaderLogo tagline={tagline} />
       <SectionHeaderImage
         mobileImage={mobileImage}
         aboveMobileImage={aboveMobileImage}

@@ -5,6 +5,10 @@ import { TTFLogo } from "../svgs/TTFLogo";
 import { LogoSubheadline } from "../../styles/typography";
 import { sizes } from "../../styles/sizes";
 
+interface HeaderLogoProps {
+  tagline: string;
+}
+
 const LogoContainer = styled.div`
   width: 100%;
 `;
@@ -32,12 +36,12 @@ const Logo = styled(TTFLogo)`
   width: 318px;
 `;
 
-export const HeaderLogo = () => {
+export const HeaderLogo: React.FC<HeaderLogoProps> = ({ tagline }) => {
   return (
     <LogoContainer>
       <LogoStack>
         <Logo gradientId="headerLogo" />
-        <LogoSubheadline>Strength Training for Women</LogoSubheadline>
+        <LogoSubheadline>{tagline}</LogoSubheadline>
       </LogoStack>
     </LogoContainer>
   );

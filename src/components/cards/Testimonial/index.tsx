@@ -18,11 +18,12 @@ const CardContainer = styled.div`
   position: relative;
   padding-left: 50px;
   width: 100%;
+  max-width: 360px;
 `;
 
 const ContentContainer = styled.div`
   position: relative;
-  padding: 12px 12px 12px 60px;
+  padding: 20px 12px 20px 80px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -52,7 +53,6 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   return (
     <>
       <CardContainer>
-        <CircleImage image={image} altTag={altTag} titleTag={titleTag} />
         <ContentContainer>
           <HeadlineContainer>
             <TestimonialHeadline>{headline}</TestimonialHeadline>
@@ -61,6 +61,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
             Read More
           </SmallArrowButton>
         </ContentContainer>
+        <CircleImage image={image} altTag={altTag} titleTag={titleTag} />
       </CardContainer>
     </>
   );

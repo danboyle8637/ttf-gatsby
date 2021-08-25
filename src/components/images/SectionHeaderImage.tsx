@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 import { ImageOverlay } from "../../styles/images";
-import { Triangle } from "../cssDrawings/Triangle";
+import { TriangleOverlay } from "../svgs/overlays/TriangleOverlay";
 import { useMatchMedia } from "../../hooks/useMatchMedia";
 import { sizes } from "../../styles/sizes";
 
@@ -19,6 +19,8 @@ const ImageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
   width: 100%;
   max-width: 1440px;
   isolation: isolate;
@@ -34,10 +36,9 @@ const HeaderImage = styled.div`
   grid-row: 1 / -1;
 `;
 
-const TriangleContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+const Triangle = styled(TriangleOverlay)`
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
   width: 100%;
   z-index: 2;
 `;
@@ -52,15 +53,15 @@ export const SectionHeaderImage: React.FC<SectionHeaderImageProps> = ({
 
   const imageData = isAboveMobile ? aboveMobileImage : mobileImage;
 
+  const triangleHeight = isAboveMobile ? 11 : 26;
+
   return (
     <ImageContainer>
       <HeaderImage>
         <GatsbyImage image={imageData} alt={altTag} title={titleTag} />
       </HeaderImage>
       <ImageOverlay />
-      <TriangleContainer>
-        <Triangle />
-      </TriangleContainer>
+      <Triangle location="top" height={triangleHeight} />
     </ImageContainer>
   );
 };

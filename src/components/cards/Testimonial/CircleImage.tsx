@@ -10,7 +10,7 @@ interface CircleImageProps {
 
 const ImageContainer = styled.div`
   position: absolute;
-  top: 12px;
+  top: 50%;
   left: 0;
   background: var(--medium-blue);
   border-radius: 50%;
@@ -18,6 +18,7 @@ const ImageContainer = styled.div`
   height: 100px;
   box-shadow: 0 0 0 4px var(--accent-blue);
   overflow: hidden;
+  transform: translateY(-50%);
 `;
 
 export const CircleImage: React.FC<CircleImageProps> = ({

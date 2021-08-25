@@ -11,4 +11,12 @@ export interface GradientSVGProps {
   gradientId: string;
 }
 
+type OverlayLocation = "top" | "bottom";
+
+export interface OverlayProps {
+  location: OverlayLocation;
+  height: number;
+  className?: string;
+}
+
 export type IconType = "clock" | "email" | "location" | "phone";
