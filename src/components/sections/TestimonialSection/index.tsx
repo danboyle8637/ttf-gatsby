@@ -1,11 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
 
+import { MainPageHeadline } from "../../../styles/typography";
 import { TriangleOverlay } from "../../svgs/overlays/TriangleOverlay";
 import { TestimonialCard } from "../../cards/Testimonial";
 import { Testimonial } from "../../../types/content";
 
 interface TestimonialSectionProps {
+  headline: string;
   testimonials: Testimonial[];
 }
 
@@ -18,13 +20,21 @@ const SectionContainer = styled.div`
   align-items: center;
   background: var(--dark-purple);
   width: 100%;
-  height: 800px;
+`;
+
+const ContentContainer = styled.div`
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  padding: 100px 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 60px;
+  justify-items: start;
+  width: 100%;
 `;
 
 const CardsContainer = styled.div`
-  padding: 0 12px;
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -39,6 +49,7 @@ const Triangle = styled(TriangleOverlay)`
 `;
 
 export const TestimonialSection: React.FC<TestimonialSectionProps> = ({
+  headline,
   testimonials,
 }) => {
   const cards = testimonials.map((card) => {
@@ -61,9 +72,12 @@ export const TestimonialSection: React.FC<TestimonialSectionProps> = ({
 
   return (
     <SectionContainer>
-      <CardsContainer>{cards}</CardsContainer>
       <Triangle location="top" height={26} />
       <Triangle location="bottom" height={26} />
+      <ContentContainer>
+        <MainPageHeadline>{headline}</MainPageHeadline>
+        <CardsContainer>{cards}</CardsContainer>
+      </ContentContainer>
     </SectionContainer>
   );
 };

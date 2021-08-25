@@ -1,10 +1,14 @@
 import * as React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
 import { CircleImage } from "./CircleImage";
 import { SmallArrowButton } from "../../buttons/SmallArrowButton";
 import { TestimonialHeadline } from "../../../styles/typography";
+import { Portal } from "../../shared/Portal";
+import { ToastOverlay } from "../../overlays/ToastOverlay";
+import { FullTestimonial } from "./FullTestimonial";
 
 interface TestimonialCardProps {
   image: IGatsbyImageData;
@@ -46,8 +50,10 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   headline,
   testimonial,
 }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const handleToggleTestimonial = () => {
-    console.log("Show the full testimonial");
+    setIsOpen((prevValue) => !prevValue);
   };
 
   return (
@@ -63,6 +69,17 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
         </ContentContainer>
         <CircleImage image={image} altTag={altTag} titleTag={titleTag} />
       </CardContainer>
+      <Portal>
+        <ToastOverlay isOpen={isOpen} toggleOverlay={handleToggleTestimonial}>
+          <FullTestimonial
+            image={image}
+            altTag={altTag}
+            titleTag={titleTag}
+            headline={headline}
+            testimonial={testimonial}
+          />
+        </ToastOverlay>
+      </Portal>
     </>
   );
 };

@@ -24,6 +24,7 @@ export const MainPageHeadline = styled.h2`
   font-size: 2.8rem;
   background: linear-gradient(to right, var(--base-white), var(--accent-blue));
   line-height: 1.4;
+  text-transform: capitalize;
   ${gradientHeadlineStyles}
   ${sizes.aboveMobile} {
     font-size: 3rem;

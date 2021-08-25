@@ -20,7 +20,16 @@ const Button = styled.button`
   align-items: center;
   background: var(--button-background, hsla(300, 89%, 64%, 0.4));
   border-radius: 80px;
-  border: 2px solid var(--button-border, var(--accent-pink));
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--button-border, var(--accent-pink));
+  transition: box-shadow 300ms ease-in-out;
+  &:focus {
+    box-shadow: 0 0 0 3px var(--button-hover-border, var(--accent-blue));
+  }
+  &:hover {
+    box-shadow: 0 0 0 3px var(--button-hover-border, var(--accent-blue));
+  }
 `;
 
 const Arrow = styled(CarrotArrow)`

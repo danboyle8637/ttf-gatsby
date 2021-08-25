@@ -34,7 +34,10 @@ const IndexPage: React.FC<HomeData> = ({ data }) => {
       <PostHeadlineImageSection />
       <CallOutSection />
       <InStudioWorkoutSection />
-      <TestimonialSection testimonials={data.testimonials1.nodes} />
+      <TestimonialSection
+        headline="Plus hangout with an amazing community of women!"
+        testimonials={data.testimonials1.nodes}
+      />
     </main>
   );
 };
