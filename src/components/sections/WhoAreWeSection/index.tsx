@@ -6,39 +6,35 @@ import { MobileLayout } from "./layouts/MobileLayout";
 import { TabletLayout } from "./layouts/TabletLayout";
 import { IpadProAndAboveLayout } from "./layouts/IpadProAndAboveLayout";
 import { useMatchMedia } from "../../../hooks/useMatchMedia";
-import { HeaderImage } from "../../../types/images";
+import { WhoAreWeSectionData } from "../../../types/sections";
 
-export interface InStudioWorkoutSectionProps {
-  headline1: string;
-  headline2: string;
+export interface WhoWeAreSectionProps {
+  headline: string;
   imageData: IGatsbyImageData;
   altTag: string;
   titleTag: string;
 }
 
-export const InStudioWorkoutSection = () => {
-  const data: HeaderImage = useStaticQuery(graphql`
+export const WhoAreWeSection = () => {
+  const data: WhoAreWeSectionData = useStaticQuery(graphql`
     query {
       mobileImage: file(
-        relativePath: { eq: "small-group-training-720x720.jpg" }
+        relativePath: { eq: "train-like-athlete-group-720x720.jpg" }
       ) {
         childImageSharp {
           gatsbyImageData
         }
       }
       aboveMobileImage: file(
-        relativePath: { eq: "small-group-training-1440x700.jpg" }
+        relativePath: { eq: "train-like-athlete-group-1440x700.jpg" }
       ) {
         childImageSharp {
           gatsbyImageData
         }
       }
-      headline: markdownRemark(
-        frontmatter: { title: { eq: "in-studio-group-training" } }
-      ) {
+      headline: markdownRemark(frontmatter: { title: { eq: "who-are-we" } }) {
         frontmatter {
-          headline1
-          headline2
+          headline
         }
       }
     }
@@ -49,27 +45,24 @@ export const InStudioWorkoutSection = () => {
 
   const activeLayout = isAboveTablet ? (
     <IpadProAndAboveLayout
-      headline1={data.headline.frontmatter.headline1}
-      headline2={data.headline.frontmatter.headline2}
+      headline={data.headline.frontmatter.headline}
       imageData={data.mobileImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members doing step ups on a box"
-      titleTag="Steps Ups On a Box"
+      altTag="Group of members after outdoor workout"
+      titleTag="Smiling After Outdoor Workout"
     />
   ) : isAboveMobile && !isAboveTablet ? (
     <TabletLayout
-      headline1={data.headline.frontmatter.headline1}
-      headline2={data.headline.frontmatter.headline2}
+      headline={data.headline.frontmatter.headline}
       imageData={data.mobileImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members doing step ups on a box"
-      titleTag="Steps Ups On a Box"
+      altTag="Group of members after outdoor workout"
+      titleTag="Smiling After Outdoor Workout"
     />
   ) : (
     <MobileLayout
-      headline1={data.headline.frontmatter.headline1}
-      headline2={data.headline.frontmatter.headline2}
+      headline={data.headline.frontmatter.headline}
       imageData={data.mobileImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members doing step ups on a box"
-      titleTag="Steps Ups On a Box"
+      altTag="Group of members after outdoor workout"
+      titleTag="Smiling After Outdoor Workout"
     />
   );
 

@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 
 const ContentContainer = styled.div`
+  justify-self: var(--content-justify, unset);
+  align-self: var(--content-align, unset);
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   padding: 20px;
@@ -14,6 +16,7 @@ const ContentContainer = styled.div`
   backdrop-filter: blur(6px);
   width: var(--container-width, 500px);
   box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.35);
+  transform: var(--content-transform, unset);
   z-index: 1;
 `;
 

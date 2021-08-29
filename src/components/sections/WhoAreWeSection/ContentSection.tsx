@@ -19,9 +19,7 @@ const SectionContainer = styled.div`
 export const ContentSection = () => {
   const data: MarkdownContent = useStaticQuery(graphql`
     query {
-      content: markdownRemark(
-        frontmatter: { title: { eq: "in-studio-group-training" } }
-      ) {
+      content: markdownRemark(frontmatter: { title: { eq: "who-are-we" } }) {
         html
       }
     }

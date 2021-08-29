@@ -5,8 +5,10 @@ import { PageHeaderImage } from "../components/sections/imageSections/PageHeader
 import { HomeHeaderContentSection } from "../components/sections/contentSections/HomeHeaderContent";
 import { PostHeadlineImageSection } from "../components/sections/imageSections/PostHeadlineImageSection";
 import { CallOutSection } from "../components/sections/CallOutSection";
+import { WhoAreWeSection } from "../components/sections/WhoAreWeSection";
 import { InStudioWorkoutSection } from "../components/sections/InStudioWorkoutsSection";
 import { TestimonialSection } from "../components/sections/TestimonialSection";
+import { ClassSchedule } from "../components/ClassSchedule";
 import { GatsbyImage } from "../types/images";
 import { Testimonial } from "../types/content";
 
@@ -33,11 +35,13 @@ const IndexPage: React.FC<HomeData> = ({ data }) => {
       <HomeHeaderContentSection />
       <PostHeadlineImageSection />
       <CallOutSection />
+      <WhoAreWeSection />
       <InStudioWorkoutSection />
-      <TestimonialSection
+      <ClassSchedule />
+      {/* <TestimonialSection
         headline="Plus hangout with an amazing community of women!"
         testimonials={data.testimonials1.nodes}
-      />
+      /> */}
     </main>
   );
 };

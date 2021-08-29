@@ -5,15 +5,18 @@ import { MainPageHeadline } from "../../../../styles/typography";
 import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
 import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
+import { useMatchMedia } from "../../../../hooks/useMatchMedia";
 import { InStudioWorkoutSectionProps } from "../index";
+import { sizes } from "../../../../styles/sizes";
 
 const SectionContainer = styled.section`
-  padding: 0 12px;
+  padding: 120px 12px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   gap: 40px;
   width: 100%;
+  max-width: 1200px;
 `;
 
 const ContentStack = styled.div`
@@ -23,6 +26,7 @@ const ContentStack = styled.div`
   justify-items: center;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
 `;
 
 const HeadlineContainer = styled.div`
@@ -33,35 +37,52 @@ const HeadlineContainer = styled.div`
   width: 100%;
 `;
 
-export const TabletLayout: React.FC<InStudioWorkoutSectionProps> = ({
+export const IpadProAndAboveLayout: React.FC<InStudioWorkoutSectionProps> = ({
   headline1,
   headline2,
   imageData,
   altTag,
   titleTag,
 }) => {
-  const layoutStyles = {
+  const isAboveIpadPro = useMatchMedia(1100);
+
+  const ipadProStyles = {
     "--image-justify": "start",
-    "--image-align": "start",
-    "--image-width": "440px",
+    "--image-align": "center",
+    "--image-width": "540px",
+    "--image-transform": "translateY(120px)",
     "--content-justify": "end",
-    "--container-width": "400px",
-    "--content-transform": "translateY(60px)",
+    "--content-align": "start",
+    "--container-width": "540px",
+    "--content-transform": "translateX(-20px)",
   } as React.CSSProperties;
+
+  const laptopStyles = {
+    "--image-justify": "start",
+    "--image-align": "center",
+    "--image-width": "600px",
+    "--image-transform": "translateY(120px)",
+    "--content-justify": "end",
+    "--content-align": "start",
+    "--container-width": "600px",
+    "--content-transform": "translateX(-20px)",
+  } as React.CSSProperties;
+
+  const activeStyles = isAboveIpadPro ? laptopStyles : ipadProStyles;
 
   return (
     <SectionContainer>
-      <HeadlineContainer>
-        <MainPageHeadline>{headline1}</MainPageHeadline>
-        <MainPageHeadline>{headline2}</MainPageHeadline>
-      </HeadlineContainer>
-      <ContentStack style={layoutStyles}>
+      <ContentStack style={activeStyles}>
         <AboveMobileSectionImage
           imageData={imageData}
           altTag={altTag}
           titleTag={titleTag}
         />
         <AboveMobileSectionContentContainer>
+          <HeadlineContainer>
+            <MainPageHeadline>{headline1}</MainPageHeadline>
+            <MainPageHeadline>{headline2}</MainPageHeadline>
+          </HeadlineContainer>
           <ContentSection />
         </AboveMobileSectionContentContainer>
       </ContentStack>

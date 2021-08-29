@@ -5,7 +5,7 @@ import { MainPageHeadline } from "../../../../styles/typography";
 import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
 import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
-import { InStudioWorkoutSectionProps } from "../index";
+import { WhoWeAreSectionProps } from "../index";
 
 const SectionContainer = styled.section`
   padding: 0 12px;
@@ -33,27 +33,27 @@ const HeadlineContainer = styled.div`
   width: 100%;
 `;
 
-export const TabletLayout: React.FC<InStudioWorkoutSectionProps> = ({
-  headline1,
-  headline2,
+export const TabletLayout: React.FC<WhoWeAreSectionProps> = ({
+  headline,
   imageData,
   altTag,
   titleTag,
 }) => {
   const layoutStyles = {
-    "--image-justify": "start",
-    "--image-align": "start",
+    "--image-justify": "end",
+    "--image-align": "center",
     "--image-width": "440px",
-    "--content-justify": "end",
+    "--image-transform": "translateY(40px)",
+    "--content-justify": "start",
+    "--content-align": "start",
     "--container-width": "400px",
-    "--content-transform": "translateY(60px)",
+    "--content-transform": "translateY(-20px)",
   } as React.CSSProperties;
 
   return (
     <SectionContainer>
       <HeadlineContainer>
-        <MainPageHeadline>{headline1}</MainPageHeadline>
-        <MainPageHeadline>{headline2}</MainPageHeadline>
+        <MainPageHeadline>{headline}</MainPageHeadline>
       </HeadlineContainer>
       <ContentStack style={layoutStyles}>
         <AboveMobileSectionImage

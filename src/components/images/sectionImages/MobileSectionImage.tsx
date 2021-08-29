@@ -4,7 +4,6 @@ import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 import { ImageOverlay } from "../../../styles/images";
 import { TriangleOverlay } from "../../svgs/overlays/TriangleOverlay";
-import { sizes } from "../../../styles/sizes";
 
 interface SectionHeaderImageProps {
   mobileImage: IGatsbyImageData;
