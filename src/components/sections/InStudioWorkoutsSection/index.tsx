@@ -1,11 +1,23 @@
 import * as React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
 import { SectionHeaderImage } from "../../images/SectionHeaderImage";
 import { Headline } from "./Headline";
 import { HeaderImage } from "../../../types/images";
 import { ContentSection } from "./ContentSection";
+
+import { MobileLayout } from "./layouts/MobileLayout";
+import { TabletLayout } from "./layouts/TabletLayout";
+
+export interface InStudioWorkoutSectionProps {
+  headline1: string;
+  headline2: string;
+  imageData: IGatsbyImageData;
+  altTag: string;
+  titleTag: string;
+}
 
 export const InStudioWorkoutSection = () => {
   const data: HeaderImage = useStaticQuery(graphql`
@@ -37,17 +49,13 @@ export const InStudioWorkoutSection = () => {
 
   return (
     <>
-      <Headline
+      <TabletLayout
         headline1={data.headline.frontmatter.headline1}
         headline2={data.headline.frontmatter.headline2}
-      />
-      <SectionHeaderImage
-        mobileImage={data.mobileImage.childImageSharp.gatsbyImageData}
-        aboveMobileImage={data.aboveMobileImage.childImageSharp.gatsbyImageData}
+        imageData={data.mobileImage.childImageSharp.gatsbyImageData}
         altTag="Group of members doing step ups on a box"
         titleTag="Steps Ups On a Box"
       />
-      <ContentSection />
     </>
   );
 };
