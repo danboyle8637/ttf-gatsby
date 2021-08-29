@@ -65,3 +65,14 @@ export const TestimonialHeadline = styled.h4`
   text-transform: capitalize;
   line-height: 1.4;
 `;
+
+export const BoldLabel = styled.p`
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--label-color, var(--base-white));
+  text-transform: uppercase;
+  line-height: 1;
+  ${sizes.aboveMobile} {
+    font-size: 1.6rem;
+  }
+`;

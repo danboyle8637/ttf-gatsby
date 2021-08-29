@@ -1,3 +1,4 @@
+import * as React from "react";
 import { BaseSVGProps } from "../../types/svgs";
 
 export const ClockIcon: React.FC<BaseSVGProps> = ({

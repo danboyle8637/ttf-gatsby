@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { CalendarDay } from "./CalendarDay";
 import { DaysOfTheWeek } from "./DaysOfTheWeek";
+import { ClassTimesSection } from "./ClassTimesSection";
 import {
   getFirstAndLastDayOfWeek,
   getLastDayOfMonthDate,
@@ -22,7 +23,9 @@ const WeekContainer = styled.div`
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   gap: 4px;
+  justify-items: center;
   width: 100%;
+  border: 1px solid red;
   ${sizes.aboveMobile} {
     gap: 8px;
   }
@@ -125,6 +128,7 @@ export const CalendarWeek: React.FC<CalendarWeekProps> = ({
     <WeekContainer>
       <DaysOfTheWeek />
       <DaysContainer>{daysOfTheWeek}</DaysContainer>
+      <ClassTimesSection activeDay={activeDay} />
     </WeekContainer>
   );
 };
