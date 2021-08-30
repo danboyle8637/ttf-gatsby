@@ -82,7 +82,7 @@ export const GlobalStyles = createGlobalStyle`
   p {
     margin: 0;
     padding: 0;
-    padding-bottom: 12px;
+    padding-bottom: 40px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: var(--paragraph-font-size, 1.7rem);
     color: var(--paragraph-color, var(--text-white));
@@ -113,7 +113,7 @@ export const GlobalStyles = createGlobalStyle`
 
   ul, ol {
     margin: 0;
-    padding: 40px 0 0 40px;
+    padding: 0 0 0 40px;
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: min-content;

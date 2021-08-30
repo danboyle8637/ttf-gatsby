@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { MainPageHeadline } from "../../../styles/typography";
 import { ClassSchedule } from "./ClassSchedule";
 import { ContactInfo } from "../../shared/ContactInfo";
+import { ShortCallToAction } from "../../sections/CallToActionSection/ShortCallToAction";
 import { ContactContent } from "../../../types/content";
 
 const SectionContainer = styled.section`
@@ -59,3 +60,7 @@ export const ClassScheduleSection = () => {
     </SectionContainer>
   );
 };
+
+/*
+
+*/

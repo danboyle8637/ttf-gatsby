@@ -10,6 +10,7 @@ import { InStudioWorkoutSection } from "../components/sections/InStudioWorkoutsS
 import { TestimonialSection } from "../components/sections/TestimonialSection";
 import { ClassScheduleSection } from "../components/sections/ClassScheduleSection";
 import { OnlineWorkoutsSection } from "../components/sections/OnlineWorkoutsSection";
+import { CallToActionSection } from "../components/sections/CallToActionSection";
 import { GatsbyImage } from "../types/images";
 import { Testimonial } from "../types/content";
 
@@ -40,6 +41,7 @@ const IndexPage: React.FC<HomeData> = ({ data }) => {
       <InStudioWorkoutSection />
       <ClassScheduleSection />
       <OnlineWorkoutsSection />
+      <CallToActionSection />
       {/* <TestimonialSection
         headline="Plus hangout with an amazing community of women!"
         testimonials={data.testimonials1.nodes}

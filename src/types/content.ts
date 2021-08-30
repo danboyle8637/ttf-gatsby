@@ -36,3 +36,12 @@ export interface Testimonial {
     image: GatsbyImage;
   };
 }
+
+export interface CallToActionData {
+  ctaCopy: {
+    html: string;
+    frontmatter: {
+      headline: string;
+    };
+  };
+}
