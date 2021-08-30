@@ -2,8 +2,8 @@ import * as React from "react";
 import { forwardRef } from "react";
 import styled from "styled-components";
 
-import { ClockIcon } from "../svgs/ClockIcon";
-import { ClassLocationChip } from "../chips/ClassLocationChip";
+import { ClockIcon } from "../../../svgs/ClockIcon";
+import { ClassLocationChip } from "../../../chips/ClassLocationChip";
 import { ClassLocation } from "./data";
 
 interface ClassTimeRowProps {

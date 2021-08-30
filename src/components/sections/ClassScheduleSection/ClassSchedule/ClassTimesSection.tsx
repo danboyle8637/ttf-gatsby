@@ -3,8 +3,9 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { TodaysClassSchedule } from "./TodaysClassSchedule";
-import { ClassScheduleTransition } from "../../animations/transitions/ClassScheduleTransition";
+import { ClassScheduleTransition } from "../../../../animations/transitions/ClassScheduleTransition";
 import { classTimes } from "./data";
+import { sizes } from "../../../../styles/sizes";
 
 interface ClassTimesSectionProps {
   activeDay: number;
@@ -24,7 +25,6 @@ export const ClassTimesSection: React.FC<ClassTimesSectionProps> = ({
   activeDay,
 }) => {
   const [showClassTimes, setShowClassTimes] = useState<boolean>(false);
-  const [thisWeeksSchedule, setThisWeeksSchedule] = useState<number>(0);
 
   const toggleShowClasses = () => {
     setShowClassTimes(true);

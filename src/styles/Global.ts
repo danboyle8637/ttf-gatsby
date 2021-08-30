@@ -101,6 +101,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a {
+    margin: 0;
+    padding: 0;
     font-size: inherit;
     color: var(---accent-blue);
     transition: color 300ms ease-in-out;

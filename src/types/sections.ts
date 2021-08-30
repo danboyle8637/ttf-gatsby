@@ -9,3 +9,13 @@ export interface WhoAreWeSectionData {
     };
   };
 }
+
+export interface OnlineWorkoutsSectionData {
+  sectionImage: GatsbyImage;
+  headline: {
+    frontmatter: {
+      headline1: string;
+      headline2: string;
+    };
+  };
+}

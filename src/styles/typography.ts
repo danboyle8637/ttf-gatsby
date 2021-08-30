@@ -67,7 +67,7 @@ export const TestimonialHeadline = styled.h4`
 `;
 
 export const BoldLabel = styled.p`
-  font-size: 1.3rem;
+  font-size: var(--label-font-size, 1.3rem);
   font-weight: 700;
   color: var(--label-color, var(--base-white));
   text-transform: uppercase;

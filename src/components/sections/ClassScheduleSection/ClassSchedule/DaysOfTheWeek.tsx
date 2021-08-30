@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { useMatchMedia } from "../../hooks/useMatchMedia";
+import { useMatchMedia } from "../../../../hooks/useMatchMedia";
 import { daysOfTheWeek } from "./data";
-import { sizes } from "../../styles/sizes";
+import { sizes } from "../../../../styles/sizes";
 
 const DayOfTheWeekContainer = styled.div`
   display: grid;
@@ -20,6 +20,7 @@ const DayOfTheWeekLabel = styled.p`
   font-size: 1.2rem;
   font-weight: 400;
   color: var(--base-white);
+  line-height: 1;
   ${sizes.aboveMobile} {
     padding-left: 12px;
   }

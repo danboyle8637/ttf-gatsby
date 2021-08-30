@@ -18,7 +18,7 @@ export const EmailIcon: React.FC<BaseSVGProps> = ({
     >
       <title>Email Logo</title>
       <rect
-        style={{ fill: "var(--email-fill, var(--base-white))" }}
+        style={{ fill: "var(--email-fill, var(--accent-blue))" }}
         width="400"
         height="251.22"
         rx="16.98"

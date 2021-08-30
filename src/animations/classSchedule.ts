@@ -1,4 +1,4 @@
-import { gsap, Power3 } from "gsap";
+import { gsap, Linear } from "gsap";
 
 export const classTimesSetAni = (classTimesArray: HTMLDivElement[]) => {
   gsap.set(classTimesArray, { autoAlpha: 0 });
@@ -18,7 +18,7 @@ export const classTimesAni = (classTimesArray: HTMLDivElement[]) => {
       scale: 1,
       stagger: {
         each: 0.2,
-        ease: Power3.easeInOut,
+        ease: Linear.easeNone,
       },
       delay: 0.2,
     }

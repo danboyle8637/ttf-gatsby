@@ -3,9 +3,9 @@ import * as React from "react";
 import { Headline } from "../Headline";
 import { MobileSectionImage } from "../../../images/sectionImages/MobileSectionImage";
 import { ContentSection } from "../ContentSection";
-import { InStudioWorkoutSectionProps } from "../index";
+import { OnlineWorkoutsSectionProps } from "../index";
 
-export const MobileLayout: React.FC<InStudioWorkoutSectionProps> = ({
+export const MobileLayout: React.FC<OnlineWorkoutsSectionProps> = ({
   headline1,
   headline2,
   imageData,

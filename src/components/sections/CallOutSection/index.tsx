@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import { CallOutHeadline } from "./CallOutHeadline";
 import { PrimaryButton } from "../../buttons/PrimaryButton";
-import { ContactInfoCard } from "../../cards/ContactInfoCard";
+import { ContactInfo } from "../../shared/ContactInfo";
 import { ContactContent } from "../../../types/content";
 import { sizes } from "../../../styles/sizes";
 
@@ -21,7 +21,7 @@ const SectionContainer = styled.section`
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     justify-items: center;
-    align-items: start;
+    align-items: center;
   }
 `;
 
@@ -32,15 +32,6 @@ const HeadlineContainer = styled.div`
   gap: 20px;
   justify-items: center;
   width: 100%; ;
-`;
-
-const CardsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: min-content;
-  gap: 20px;
-  justify-items: center;
-  width: 100%;
 `;
 
 export const CallOutSection = () => {
@@ -66,19 +57,14 @@ export const CallOutSection = () => {
         <CallOutHeadline />
         <PrimaryButton>FREE 14 Day Trial!</PrimaryButton>
       </HeadlineContainer>
-      <CardsContainer>
-        <ContactInfoCard iconType="location">
-          <p>{data.contactInfo.frontmatter.addressLine1}</p>
-          <p>{data.contactInfo.frontmatter.addressLine2}</p>
-          <p>{data.contactInfo.frontmatter.addressLine3}</p>
-        </ContactInfoCard>
-        <ContactInfoCard iconType="phone" alignItems="center">
-          <p>{data.contactInfo.frontmatter.phoneNumber}</p>
-        </ContactInfoCard>
-        <ContactInfoCard iconType="email" alignItems="center">
-          <p>{data.contactInfo.frontmatter.emailAddress}</p>
-        </ContactInfoCard>
-      </CardsContainer>
+      <ContactInfo
+        addressLine1={data.contactInfo.frontmatter.addressLine1}
+        addressLine2={data.contactInfo.frontmatter.addressLine2}
+        addressLine3={data.contactInfo.frontmatter.addressLine3}
+        phoneNumber={data.contactInfo.frontmatter.phoneNumber}
+        emailAddress={data.contactInfo.frontmatter.emailAddress}
+        showButton={false}
+      />
     </SectionContainer>
   );
 };

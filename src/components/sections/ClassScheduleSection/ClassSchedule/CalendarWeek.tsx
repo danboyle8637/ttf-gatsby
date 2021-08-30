@@ -9,8 +9,8 @@ import {
   getFirstAndLastDayOfWeek,
   getLastDayOfMonthDate,
   getLastDayOfLastMonthDate,
-} from "../../utils/calendarFunctions";
-import { sizes } from "../../styles/sizes";
+} from "../../../../utils/calendarFunctions";
+import { sizes } from "../../../../styles/sizes";
 
 interface CalendarWeekProps {
   today: number;
@@ -18,17 +18,23 @@ interface CalendarWeekProps {
   handleDayClick: (dayOfWeek: number) => void;
 }
 
-const WeekContainer = styled.div`
+const ScheduleContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
-  gap: 4px;
+  gap: 40px;
   justify-items: center;
   width: 100%;
-  border: 1px solid red;
+  height: 400px;
   ${sizes.aboveMobile} {
-    gap: 8px;
+    height: 460px;
   }
+`;
+
+const WeekContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 const DaysContainer = styled.div`
@@ -125,10 +131,12 @@ export const CalendarWeek: React.FC<CalendarWeekProps> = ({
   });
 
   return (
-    <WeekContainer>
-      <DaysOfTheWeek />
-      <DaysContainer>{daysOfTheWeek}</DaysContainer>
+    <ScheduleContainer>
+      <WeekContainer>
+        <DaysOfTheWeek />
+        <DaysContainer>{daysOfTheWeek}</DaysContainer>
+      </WeekContainer>
       <ClassTimesSection activeDay={activeDay} />
-    </WeekContainer>
+    </ScheduleContainer>
   );
 };

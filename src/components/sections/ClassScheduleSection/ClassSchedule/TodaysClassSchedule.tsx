@@ -3,11 +3,8 @@ import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import { ClassTimeRow } from "./ClassTimeRow";
-
-import {
-  classTimesAni,
-  classTimesSetAni,
-} from "../../animations/classSchedule";
+import { TestimonialHeadline } from "../../../../styles/typography";
+import { classTimesAni } from "../../../../animations/classSchedule";
 import { ClassTime } from "./data";
 
 interface ClassRowSectionProps {
@@ -25,6 +22,12 @@ const SectionContainer = styled.div`
   width: 100%;
 `;
 
+const NoClassesContainer = styled.div`
+  align-self: center;
+  text-align: center;
+  width: 100%;
+`;
+
 export const TodaysClassSchedule: React.FC<ClassRowSectionProps> = ({
   classTimesArray,
   showClassTimes,
@@ -34,15 +37,7 @@ export const TodaysClassSchedule: React.FC<ClassRowSectionProps> = ({
   useEffect(() => {
     const classTimesArray = classTimesArrayRef.current;
 
-    if (classTimesArray && classTimesArray[0] !== null) {
-      classTimesSetAni(classTimesArray);
-    }
-  }, []);
-
-  useEffect(() => {
-    const classTimesArray = classTimesArrayRef.current;
-
-    if (classTimesArray && classTimesArray[0] !== null && showClassTimes) {
+    if (classTimesArray && showClassTimes) {
       classTimesAni(classTimesArray);
     }
 
@@ -64,5 +59,19 @@ export const TodaysClassSchedule: React.FC<ClassRowSectionProps> = ({
     );
   });
 
-  return <SectionContainer>{classes}</SectionContainer>;
+  const noClassesStyles = {
+    "--headline-color": "var(--accent-blue-dark)",
+  } as React.CSSProperties;
+
+  return (
+    <SectionContainer style={noClassesStyles}>
+      {classes.length === 0 ? (
+        <NoClassesContainer>
+          <TestimonialHeadline>No Classes Today</TestimonialHeadline>
+        </NoClassesContainer>
+      ) : (
+        classes
+      )}
+    </SectionContainer>
+  );
 };
