@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     --accent-blue-dark: hsl(226, 27%, 10%);
     --accent-blue: hsl(193, 91%, 56%);
     --accent-pink: hsl(300, 89%, 64%);
+    --accent-purple: hsl(258, 67%, 60%);
     --dark-purple: hsl(258, 41%, 34%);
     --base-white: hsl(0, 0%, 97%);
     --text-white: hsl(226, 35%, 83%);

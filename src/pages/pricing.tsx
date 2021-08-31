@@ -1,7 +1,9 @@
 import * as React from "react";
 
+import { PriceCardSection } from "../components/sections/PriceCardsSection";
+
 const PricingPage = () => {
-  return <h1>Pricing Page</h1>;
+  return <PriceCardSection />;
 };
 
 export default PricingPage;
