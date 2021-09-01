@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 import { KettlebellIcon } from "../../svgs/KettlebellIcon";
 
+interface CardBulletPointsProps {
+  bullet1: string;
+  bullet2: string;
+  bullet3: string;
+}
+
 const SectionContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -44,21 +50,25 @@ const ThePoint = styled.p`
   line-height: 1;
 `;
 
-export const CardBulletPoints = () => {
+export const CardBulletPoints: React.FC<CardBulletPointsProps> = ({
+  bullet1,
+  bullet2,
+  bullet3,
+}) => {
   return (
     <SectionContainer>
       <PointsContainer>
         <BulletPoint>
           <Kettlebell />
-          <ThePoint>No monthly contracts</ThePoint>
+          <ThePoint>{bullet1}</ThePoint>
         </BulletPoint>
         <BulletPoint>
           <Kettlebell />
-          <ThePoint>Private Facebook Group</ThePoint>
+          <ThePoint>{bullet2}</ThePoint>
         </BulletPoint>
         <BulletPoint>
           <Kettlebell />
-          <ThePoint>The results you deserve!</ThePoint>
+          <ThePoint>{bullet3}</ThePoint>
         </BulletPoint>
       </PointsContainer>
     </SectionContainer>

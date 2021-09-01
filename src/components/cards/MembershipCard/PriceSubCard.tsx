@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { Price, NumberOfClasses } from "../../../types/components";
+import { PricingType, Price, NumberOfClasses } from "../../../types/components";
 
 interface PriceSubCardProps {
   price: Price;

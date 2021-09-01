@@ -32,7 +32,7 @@ const BackButton = styled.div`
   border-radius: 20px;
 `;
 
-const FrontButton = styled.button`
+const FrontButton = styled.div`
   grid-column: 1 / -1;
   grid-row: 1 / -1;
   ${baseButtonStyles}
@@ -48,7 +48,7 @@ export const FloatingDummyButton: React.FC<DummyButtonProps> = ({
   isHovering,
   children,
 }) => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const buttonRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const button = buttonRef.current;
@@ -65,9 +65,7 @@ export const FloatingDummyButton: React.FC<DummyButtonProps> = ({
   return (
     <ButtonContainer>
       <BackButton />
-      <FrontButton ref={buttonRef} type="button">
-        {children}
-      </FrontButton>
+      <FrontButton ref={buttonRef}>{children}</FrontButton>
     </ButtonContainer>
   );
 };

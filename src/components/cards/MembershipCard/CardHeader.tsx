@@ -1,10 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { MembershipPlan } from "../../../types/components";
+import { MembershipPlan, PricingType } from "../../../types/components";
 
 interface CardHeaderProps {
   planTitle: MembershipPlan;
+  type: PricingType;
 }
 
 const HeaderContainer = styled.header`
@@ -41,12 +42,14 @@ const PlanTitle = styled.h4`
   letter-spacing: 0.06rem;
 `;
 
-export const CardHeader: React.FC<CardHeaderProps> = ({ planTitle }) => {
+export const CardHeader: React.FC<CardHeaderProps> = ({ planTitle, type }) => {
   return (
     <HeaderContainer>
       <PlanTitleContainer>
         <AccentBar />
-        <PlanTitle>{planTitle}</PlanTitle>
+        <PlanTitle>
+          {planTitle} {type === "membership" ? "Plan" : "Pass"}
+        </PlanTitle>
       </PlanTitleContainer>
     </HeaderContainer>
   );
