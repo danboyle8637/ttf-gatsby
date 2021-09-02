@@ -4,11 +4,13 @@ import styled from "styled-components";
 import { MainPageHeadline } from "../../../styles/typography";
 import { TriangleOverlay } from "../../svgs/overlays/TriangleOverlay";
 import { TestimonialCard } from "../../cards/Testimonial";
-import { Testimonial } from "../../../types/content";
+import { useMatchMedia } from "../../../hooks/useMatchMedia";
+import { SanityTestimonial } from "../../../types/pages";
+import { sizes } from "../../../styles/sizes";
 
 interface TestimonialSectionProps {
   headline: string;
-  testimonials: Testimonial[];
+  testimonials: SanityTestimonial[];
 }
 
 const SectionContainer = styled.div`
@@ -32,6 +34,10 @@ const ContentContainer = styled.div`
   gap: 60px;
   justify-items: start;
   width: 100%;
+  max-width: 1000px;
+  ${sizes.aboveMobile} {
+    padding: 100px 24px;
+  }
 `;
 
 const CardsContainer = styled.div`
@@ -40,6 +46,13 @@ const CardsContainer = styled.div`
   grid-auto-rows: min-content;
   gap: 40px;
   width: 100%;
+  ${sizes.aboveMobile} {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: min-content;
+    column-gap: 20px;
+    row-gap: 40px;
+    justify-items: center;
+  }
 `;
 
 const Triangle = styled(TriangleOverlay)`
@@ -52,11 +65,15 @@ export const TestimonialSection: React.FC<TestimonialSectionProps> = ({
   headline,
   testimonials,
 }) => {
+  const isAboveMobile = useMatchMedia();
+  const isAboveTablet = useMatchMedia(960);
+  const isAboveIpadPro = useMatchMedia(1100);
+
   const cards = testimonials.map((card) => {
     const id = card.id;
-    const testimonial = card.html;
-    const headline = card.frontmatter.headline;
-    const image = card.frontmatter.image.childImageSharp.gatsbyImageData;
+    const testimonial = card._rawTestimonialBody;
+    const headline = card.testimonialHeadline;
+    const image = card.customerPicture.asset.gatsbyImageData;
 
     return (
       <TestimonialCard
@@ -64,16 +81,24 @@ export const TestimonialSection: React.FC<TestimonialSectionProps> = ({
         headline={headline}
         image={image}
         testimonial={testimonial}
-        altTag="alt tag"
-        titleTag="title tag"
+        altTag="A picture of a happy customer and member"
+        titleTag="This Time Fitness Member"
       />
     );
   });
 
+  const triangleHeight = isAboveIpadPro
+    ? 6
+    : isAboveTablet && !isAboveIpadPro
+    ? 10
+    : isAboveMobile && !isAboveTablet
+    ? 16
+    : 26;
+
   return (
     <SectionContainer>
-      <Triangle location="top" height={26} />
-      <Triangle location="bottom" height={26} />
+      <Triangle location="top" height={triangleHeight} />
+      <Triangle location="bottom" height={triangleHeight} />
       <ContentContainer>
         <MainPageHeadline>{headline}</MainPageHeadline>
         <CardsContainer>{cards}</CardsContainer>

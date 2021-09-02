@@ -4,9 +4,9 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import { MainPageHeadline } from "../../../styles/typography";
 import { ClassSchedule } from "./ClassSchedule";
-import { ContactInfo } from "../../shared/ContactInfo";
-import { ShortCallToAction } from "../../sections/CallToActionSection/ShortCallToAction";
+import { ResponsiveContactInfo } from "../../shared/ResponsiveContactInfo";
 import { ContactContent } from "../../../types/content";
+import { sizes } from "../../../styles/sizes";
 
 const SectionContainer = styled.section`
   padding: 80px 12px;
@@ -14,6 +14,12 @@ const SectionContainer = styled.section`
   justify-content: center;
   background: var(--accent-blue-dark);
   width: 100%;
+  ${sizes.aboveMobile} {
+    padding: 120px 24px;
+  }
+  ${sizes.aboveTablet} {
+    padding: 120px 0;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -48,13 +54,12 @@ export const ClassScheduleSection = () => {
       <ContentContainer>
         <MainPageHeadline>Full Schedule Limited Spots!</MainPageHeadline>
         <ClassSchedule />
-        <ContactInfo
+        <ResponsiveContactInfo
           addressLine1={data.contactInfo.frontmatter.addressLine1}
           addressLine2={data.contactInfo.frontmatter.addressLine2}
           addressLine3={data.contactInfo.frontmatter.addressLine3}
           phoneNumber={data.contactInfo.frontmatter.phoneNumber}
           emailAddress={data.contactInfo.frontmatter.emailAddress}
-          showButton={true}
         />
       </ContentContainer>
     </SectionContainer>

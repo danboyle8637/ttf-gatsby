@@ -23,6 +23,7 @@ const Button = styled.button`
   border: none;
   outline: none;
   box-shadow: 0 0 0 3px var(--button-border, var(--accent-pink));
+  cursor: pointer;
   transition: box-shadow 300ms ease-in-out;
   &:focus {
     box-shadow: 0 0 0 3px var(--button-hover-border, var(--accent-blue));

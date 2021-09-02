@@ -5,7 +5,7 @@ import { MainSectionHeadline } from "../../../../styles/typography";
 import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
 import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
-import { PrimaryButton } from "../../../buttons/PrimaryButton";
+import { SecondaryButton } from "../../../buttons/SecondaryButton";
 import { useMatchMedia } from "../../../../hooks/useMatchMedia";
 import { WhoWeAreSectionProps } from "../index";
 import { sizes } from "../../../../styles/sizes";
@@ -81,7 +81,7 @@ export const IpadProAndAboveLayout: React.FC<WhoWeAreSectionProps> = ({
             <MainSectionHeadline>{headline}</MainSectionHeadline>
           </HeadlineContainer>
           <ContentSection />
-          <PrimaryButton>More About Us</PrimaryButton>
+          <SecondaryButton slug={"/about"}>Learn More About Us</SecondaryButton>
         </AboveMobileSectionContentContainer>
       </ContentStack>
     </SectionContainer>

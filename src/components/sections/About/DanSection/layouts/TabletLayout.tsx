@@ -1,17 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import {
-  MainPageHeadline,
-  MainSectionHeadline,
-} from "../../../../styles/typography";
-import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
-import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
+import { MainSectionHeadline } from "../../../../../styles/typography";
+import { AboveMobileSectionImage } from "../../../../images/sectionImages/AboveMobileSectionImage";
+import { AboveMobileSectionContentContainer } from "../../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
-import { OnlineWorkoutsSectionProps } from "../index";
+import { DanSectionProps } from "../index";
 
 const SectionContainer = styled.section`
-  padding: 80px 12px;
+  padding: 120px 12px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -28,17 +25,8 @@ const ContentStack = styled.div`
   width: 100%;
 `;
 
-const HeadlineContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: min-content;
-  justify-items: start;
-  width: 100%;
-`;
-
-export const TabletLayout: React.FC<OnlineWorkoutsSectionProps> = ({
-  headline1,
-  headline2,
+export const TabletLayout: React.FC<DanSectionProps> = ({
+  headline,
   imageData,
   altTag,
   titleTag,
@@ -47,18 +35,15 @@ export const TabletLayout: React.FC<OnlineWorkoutsSectionProps> = ({
     "--image-justify": "end",
     "--image-align": "start",
     "--image-width": "440px",
-    "--image-transform": "translateY(60px)",
+    "--image-transform": "translateX(-40px)",
     "--content-justify": "start",
-    "--container-width": "460px",
-    "--content-transform": "translateY(0px)",
+    "--container-width": "400px",
+    "--content-transform": "translateY(-40px)",
   } as React.CSSProperties;
 
   return (
     <SectionContainer>
-      <HeadlineContainer>
-        <MainPageHeadline>{headline1}</MainPageHeadline>
-        <MainSectionHeadline>{headline2}</MainSectionHeadline>
-      </HeadlineContainer>
+      <MainSectionHeadline>{headline}</MainSectionHeadline>
       <ContentStack style={layoutStyles}>
         <AboveMobileSectionImage
           imageData={imageData}

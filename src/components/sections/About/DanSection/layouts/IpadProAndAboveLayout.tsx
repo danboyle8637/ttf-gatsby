@@ -1,18 +1,15 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import {
-  MainPageHeadline,
-  MainSectionHeadline,
-} from "../../../../styles/typography";
-import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
-import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
+import { MainSectionHeadline } from "../../../../../styles/typography";
+import { AboveMobileSectionImage } from "../../../../images/sectionImages/AboveMobileSectionImage";
+import { AboveMobileSectionContentContainer } from "../../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
-import { useMatchMedia } from "../../../../hooks/useMatchMedia";
-import { OnlineWorkoutsSectionProps } from "../index";
+import { useMatchMedia } from "../../../../../hooks/useMatchMedia";
+import { DanSectionProps } from "../index";
 
 const SectionContainer = styled.section`
-  padding: 120px 12px;
+  padding: 120px 12px 180px 12px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -31,17 +28,8 @@ const ContentStack = styled.div`
   max-width: 1200px;
 `;
 
-const HeadlineContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: min-content;
-  justify-items: start;
-  width: 100%;
-`;
-
-export const IpadProAndAboveLayout: React.FC<OnlineWorkoutsSectionProps> = ({
-  headline1,
-  headline2,
+export const IpadProAndAboveLayout: React.FC<DanSectionProps> = ({
+  headline,
   imageData,
   altTag,
   titleTag,
@@ -52,22 +40,22 @@ export const IpadProAndAboveLayout: React.FC<OnlineWorkoutsSectionProps> = ({
     "--image-justify": "end",
     "--image-align": "center",
     "--image-width": "540px",
-    "--image-transform": "translateY(0px)",
+    "--image-transform": "translate(-40px, 0px)",
     "--content-justify": "start",
     "--content-align": "start",
-    "--container-width": "580px",
-    "--content-transform": "translateX(0px)",
+    "--container-width": "540px",
+    "--content-transform": "translate(40px, 40px)",
   } as React.CSSProperties;
 
   const laptopStyles = {
     "--image-justify": "end",
     "--image-align": "center",
     "--image-width": "600px",
-    "--image-transform": "translateY(0px)",
+    "--image-transform": "translateY(20px)",
     "--content-justify": "start",
     "--content-align": "start",
-    "--container-width": "660px",
-    "--content-transform": "translateX(-20px)",
+    "--container-width": "600px",
+    "--content-transform": "translate(100px, -40px)",
   } as React.CSSProperties;
 
   const activeStyles = isAboveIpadPro ? laptopStyles : ipadProStyles;
@@ -81,10 +69,7 @@ export const IpadProAndAboveLayout: React.FC<OnlineWorkoutsSectionProps> = ({
           titleTag={titleTag}
         />
         <AboveMobileSectionContentContainer>
-          <HeadlineContainer>
-            <MainPageHeadline>{headline1}</MainPageHeadline>
-            <MainSectionHeadline>{headline2}</MainSectionHeadline>
-          </HeadlineContainer>
+          <MainSectionHeadline>{headline}</MainSectionHeadline>
           <ContentSection />
         </AboveMobileSectionContentContainer>
       </ContentStack>

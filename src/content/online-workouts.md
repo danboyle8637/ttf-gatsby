@@ -1,7 +1,7 @@
 ---
 title: "online-workouts"
 headline1: "LIVE Streaming"
-headline2: "Daily Online Workouts"
+headline2: "Online Workouts"
 ---
 
 Stop fighting Charleston traffic. Stop force fitting your schedule around a workout.

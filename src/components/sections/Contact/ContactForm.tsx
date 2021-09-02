@@ -2,8 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { TextInput } from "../../forms/inputs/TextInput";
-import { useLeadForm } from "../../../hooks/useLeadForm";
+import {} from "../../forms/inputs/";
 import { PrimaryButton } from "../../buttons/PrimaryButton";
+import { useContactForm } from "../../../hooks/useContactForm";
 
 const FormContainer = styled.form`
   padding-top: 40px;
@@ -15,23 +16,18 @@ const FormContainer = styled.form`
   width: 100%;
 `;
 
-export const LeadForm = () => {
+export const ContactForm = () => {
   const {
     firstName,
     firstNameOptions,
     emailAddress,
     emailAddressOptions,
+    message,
+    messageOptions,
     updateInputValue,
     updateInputOptions,
     setClearInput,
-  } = useLeadForm();
-
-  const handleLeadFormSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log("Form submitted... hit the Gatsby Function!");
-  };
-
-  const formValie = firstName.valid && emailAddress.valid;
+  } = useContactForm();
 
   return (
     <FormContainer onSubmit={handleLeadFormSubmit}>

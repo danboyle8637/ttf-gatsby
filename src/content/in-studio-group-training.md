@@ -1,7 +1,7 @@
 ---
 title: "in-studio-group-training"
 headline1: "In-Studio"
-headline2: "Small Group Training"
+headline2: "Private Training"
 ---
 
 This is NOT just a class... You get the **personal attention** you deserve for significant results.

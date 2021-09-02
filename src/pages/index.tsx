@@ -49,14 +49,14 @@ const IndexPage: React.FC<HomePageData> = ({ data }) => {
         <PostHeadlineImageSection />
         <CallOutSection />
         <WhoAreWeSection />
+        <TestimonialSection
+          headline="Here From Our Badass Ladies..."
+          testimonials={data.testimonials.nodes}
+        />
         <InStudioWorkoutSection />
         <ClassScheduleSection />
         <OnlineWorkoutsSection />
         <CallToActionSection />
-        {/* <TestimonialSection
-        headline="Plus hangout with an amazing community of women!"
-        testimonials={data.testimonials1.nodes}
-      /> */}
       </main>
     </>
   );
@@ -106,40 +106,20 @@ export const homeData = graphql`
         }
       }
     }
-  }
-`;
-
-/*
-query {
-    mobileHeaderImage: file(
-      relativePath: { eq: "ttf-group-flex-600x600.jpg" }
-    ) {
-      childImageSharp {
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-      }
-    }
-    aboveMobileHeaderImage: file(
-      relativePath: { eq: "ttf-group-flex-1440x700.jpg" }
-    ) {
-      childImageSharp {
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-      }
-    }
-    testimonials1: allMarkdownRemark(
-      filter: { frontmatter: { title: { eq: "testimonial-batch-1" } } }
+    testimonials: allSanityTestimonialCard(
+      filter: { devTitle: { in: ["Amanda R", "Sam", "Tiffany", "Stephanie"] } }
     ) {
       nodes {
-        id
-        html
-        frontmatter {
-          headline
-          image {
-            childImageSharp {
-              gatsbyImageData
-            }
+        customerName
+        customerLocation
+        testimonialHeadline
+        _rawTestimonialBody
+        customerPicture {
+          asset {
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }
     }
   }
-*/
+`;

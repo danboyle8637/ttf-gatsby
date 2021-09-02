@@ -7,6 +7,6 @@ const Icon = styled(Clock)`
   width: 27px;
 `;
 
-export const CLockIcon = () => {
+export const ClockIcon = () => {
   return <Icon />;
 };

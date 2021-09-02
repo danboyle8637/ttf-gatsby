@@ -5,6 +5,7 @@ import { MainSectionHeadline } from "../../../../styles/typography";
 import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
 import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
+import { SecondaryButton } from "../../../buttons/SecondaryButton";
 import { WhoWeAreSectionProps } from "../index";
 
 const SectionContainer = styled.section`
@@ -63,6 +64,7 @@ export const TabletLayout: React.FC<WhoWeAreSectionProps> = ({
         />
         <AboveMobileSectionContentContainer>
           <ContentSection />
+          <SecondaryButton slug="/about">Learn More About Us</SecondaryButton>
         </AboveMobileSectionContentContainer>
       </ContentStack>
     </SectionContainer>

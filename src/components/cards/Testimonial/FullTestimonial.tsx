@@ -4,13 +4,15 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 
 import { SmallCircleImage } from "./SmallCircleImage";
 import { MainPageHeadline } from "../../../styles/typography";
+import { BlockContent } from "../../sanity/components/BlockContent";
+import { blockContentSerializer } from "../../sanity/components/Serializer";
 
 interface FullTestimonailProps {
   image: IGatsbyImageData;
   altTag: string;
   titleTag: string;
   headline: string;
-  testimonial: string;
+  testimonial: [];
 }
 
 const TestimonialContainer = styled.div`
@@ -34,7 +36,7 @@ export const FullTestimonial: React.FC<FullTestimonailProps> = ({
     <TestimonialContainer>
       <SmallCircleImage image={image} altTag={altTag} titleTag={titleTag} />
       <MainPageHeadline>{headline}</MainPageHeadline>
-      <div dangerouslySetInnerHTML={{ __html: testimonial }} />
+      <BlockContent blocks={testimonial} serializer={blockContentSerializer} />
     </TestimonialContainer>
   );
 };

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { CLockIcon } from "./ClockIcon";
+import { ClockIcon } from "./ClockIcon";
 import { EmailIcon } from "./EmailIcon";
 import { LocationIcon } from "./LocationIcon";
 import { PhoneIcon } from "./PhoneIcon";
@@ -13,7 +13,7 @@ interface RenderIconProps {
 export const RenderIcon: React.FC<RenderIconProps> = ({ iconType }) => {
   switch (iconType) {
     case "clock": {
-      return <CLockIcon />;
+      return <ClockIcon />;
     }
     case "email": {
       return <EmailIcon />;

@@ -2,10 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { Headline } from "../Headline";
-import { MobileSectionImage } from "../../../images/sectionImages/MobileSectionImage";
+import { MobileSectionImage } from "../../../../images/sectionImages/MobileSectionImage";
 import { ContentSection } from "../ContentSection";
-import { SecondaryButton } from "../../../buttons/SecondaryButton";
-import { WhoWeAreSectionProps } from "../index";
+import { DanSectionProps } from "../index";
 
 const ContentContainer = styled.div`
   padding: 60px 12px 0 12px;
@@ -17,7 +16,7 @@ const ContentContainer = styled.div`
   width: 100%;
 `;
 
-export const MobileLayout: React.FC<WhoWeAreSectionProps> = ({
+export const MobileLayout: React.FC<DanSectionProps> = ({
   headline,
   imageData,
   altTag,
@@ -33,7 +32,6 @@ export const MobileLayout: React.FC<WhoWeAreSectionProps> = ({
       />
       <ContentContainer>
         <ContentSection />
-        <SecondaryButton slug="/about">Learn More About Us</SecondaryButton>
       </ContentContainer>
     </>
   );

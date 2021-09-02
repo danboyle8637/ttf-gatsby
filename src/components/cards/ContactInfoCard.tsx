@@ -17,11 +17,11 @@ const CardContainer = styled.div`
   grid-template-columns: min-content 1fr;
   gap: 12px;
   justify-items: start;
-  align-items: var(--align-items, start);
+  align-items: center;
   background: linear-gradient(to right, hsl(227, 30%, 34%), hsl(227, 30%, 54%));
   border-radius: 16px;
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   box-shadow: 0 2px 12px 2px hsla(240, 0%, 0%, 0.4);
 `;
 

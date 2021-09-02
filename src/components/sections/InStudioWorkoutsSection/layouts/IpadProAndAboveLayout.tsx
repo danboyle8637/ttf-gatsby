@@ -1,7 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { MainPageHeadline } from "../../../../styles/typography";
+import {
+  MainPageHeadline,
+  MainSectionHeadline,
+} from "../../../../styles/typography";
 import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
 import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
@@ -10,7 +13,7 @@ import { InStudioWorkoutSectionProps } from "../index";
 import { sizes } from "../../../../styles/sizes";
 
 const SectionContainer = styled.section`
-  padding: 120px 12px;
+  padding: 120px 12px 180px 12px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -81,7 +84,7 @@ export const IpadProAndAboveLayout: React.FC<InStudioWorkoutSectionProps> = ({
         <AboveMobileSectionContentContainer>
           <HeadlineContainer>
             <MainPageHeadline>{headline1}</MainPageHeadline>
-            <MainPageHeadline>{headline2}</MainPageHeadline>
+            <MainSectionHeadline>{headline2}</MainSectionHeadline>
           </HeadlineContainer>
           <ContentSection />
         </AboveMobileSectionContentContainer>

@@ -15,14 +15,16 @@ interface TestimonialCardProps {
   altTag: string;
   titleTag: string;
   headline: string;
-  testimonial: string;
+  testimonial: [];
 }
 
 const CardContainer = styled.div`
   position: relative;
   padding-left: 50px;
+  display: flex;
+  align-items: center;
   width: 100%;
-  max-width: 360px;
+  max-width: 440px;
 `;
 
 const ContentContainer = styled.div`
@@ -31,7 +33,7 @@ const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
-  gap: 12px;
+  gap: 20px;
   justify-items: center;
   background-color: var(--accent-blue-dark);
   border-radius: 12px;

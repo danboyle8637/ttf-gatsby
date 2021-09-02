@@ -25,11 +25,13 @@ const SectionContainer = styled.div`
   gap: 40px;
   width: 100%;
   ${sizes.aboveMobile} {
+    padding-bottom: 120px;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
     row-gap: 40px;
   }
   ${sizes.aboveTablet} {
+    padding-bottom: 160px;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }

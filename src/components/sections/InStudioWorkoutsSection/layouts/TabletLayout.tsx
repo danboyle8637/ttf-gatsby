@@ -1,14 +1,17 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { MainPageHeadline } from "../../../../styles/typography";
+import {
+  MainPageHeadline,
+  MainSectionHeadline,
+} from "../../../../styles/typography";
 import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
 import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
 import { InStudioWorkoutSectionProps } from "../index";
 
 const SectionContainer = styled.section`
-  padding: 0 12px;
+  padding: 120px 12px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -53,7 +56,7 @@ export const TabletLayout: React.FC<InStudioWorkoutSectionProps> = ({
     <SectionContainer>
       <HeadlineContainer>
         <MainPageHeadline>{headline1}</MainPageHeadline>
-        <MainPageHeadline>{headline2}</MainPageHeadline>
+        <MainSectionHeadline>{headline2}</MainSectionHeadline>
       </HeadlineContainer>
       <ContentStack style={layoutStyles}>
         <AboveMobileSectionImage

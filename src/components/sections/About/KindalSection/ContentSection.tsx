@@ -2,10 +2,10 @@ import * as React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 
-import { BlockContent } from "../../sanity/components/BlockContent";
-import { blockContentSerializer } from "../../sanity/components/Serializer";
-import { WhoWeAreCopy } from "../../../types/pages";
-import { sizes } from "../../../styles/sizes";
+import { BlockContent } from "../../../sanity/components/BlockContent";
+import { blockContentSerializer } from "../../../sanity/components/Serializer";
+import { KindalCopy } from "../../../../types/pages";
+import { sizes } from "../../../../styles/sizes";
 
 const SectionContainer = styled.div`
   display: flex;
@@ -18,10 +18,10 @@ const SectionContainer = styled.div`
 `;
 
 export const ContentSection: React.FC = () => {
-  const data: WhoWeAreCopy = useStaticQuery(graphql`
+  const data: KindalCopy = useStaticQuery(graphql`
     query {
-      whoWeAreCopy: sanityMarketingPage(headline1: { eq: "Home Page" }) {
-        copyBlock1 {
+      kindalCopy: sanityMarketingPage(headline1: { eq: "About Page" }) {
+        copyBlock2 {
           _rawContent
         }
       }
@@ -31,7 +31,7 @@ export const ContentSection: React.FC = () => {
   return (
     <SectionContainer>
       <BlockContent
-        blocks={data.whoWeAreCopy.copyBlock1._rawContent}
+        blocks={data.kindalCopy.copyBlock2._rawContent}
         serializer={blockContentSerializer}
       />
     </SectionContainer>

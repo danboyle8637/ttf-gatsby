@@ -16,9 +16,10 @@ const ImageContainer = styled.div`
   border-radius: 50%;
   width: 80px;
   height: 80px;
-  box-shadow: 0 0 0 4px var(--accent-blue);
+  box-shadow: 0 0 0 4px var(--accent-blue, hsl(193, 91%, 56%)),
+    0 0 20px 2px hsla(240, 0%, 0%, 0.3);
   overflow: hidden;
-  box-shadow: 0 0 20px 2px hsla(240, 0%, 0%, 0.3);
+
   transform: translate(-50%, -50%);
 `;
 
