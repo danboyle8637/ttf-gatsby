@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { MainPageHeadline } from "../../../../styles/typography";
+import { MainSectionHeadline } from "../../../../styles/typography";
 import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
 import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
@@ -78,7 +78,7 @@ export const IpadProAndAboveLayout: React.FC<WhoWeAreSectionProps> = ({
         />
         <AboveMobileSectionContentContainer>
           <HeadlineContainer>
-            <MainPageHeadline>{headline}</MainPageHeadline>
+            <MainSectionHeadline>{headline}</MainSectionHeadline>
           </HeadlineContainer>
           <ContentSection />
           <PrimaryButton>More About Us</PrimaryButton>

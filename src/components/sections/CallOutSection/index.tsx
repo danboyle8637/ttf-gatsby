@@ -9,7 +9,7 @@ import { ContactContent } from "../../../types/content";
 import { sizes } from "../../../styles/sizes";
 
 const SectionContainer = styled.section`
-  padding: 80px 12px;
+  padding: 40px 12px 80px 12px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -22,6 +22,13 @@ const SectionContainer = styled.section`
     gap: 40px;
     justify-items: center;
     align-items: center;
+  }
+  ${sizes.aboveTablet} {
+    padding: 120px 0 80px 0;
+    width: fit-content;
+  }
+  ${sizes.aboveIpadPro} {
+    padding: 180px 0 80px 0;
   }
 `;
 

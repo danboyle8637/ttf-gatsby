@@ -3,9 +3,11 @@ import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 import { MainPageHeadline } from "../../../styles/typography";
+import { BlockContent } from "../../sanity/components/BlockContent";
+import { blockContentSerializer } from "../../sanity/components/Serializer";
 import { LeadForm } from "./LeadForm";
 import { FreeClassPassCard } from "../../svgs/FreeClassPassCard";
-import { CallToActionData } from "../../../types/content";
+import { CallToActionCopyData } from "../../../types/pages";
 
 const SectionContainer = styled.section`
   position: relative;
@@ -45,14 +47,12 @@ const CardShadow = styled.div`
 `;
 
 export const CallToActionSection = () => {
-  const data: CallToActionData = useStaticQuery(graphql`
+  const data: CallToActionCopyData = useStaticQuery(graphql`
     query {
-      ctaCopy: markdownRemark(
-        frontmatter: { title: { eq: "call-to-action-long" } }
-      ) {
-        html
-        frontmatter {
+      callToActionCopy: sanityMarketingPage(headline1: { eq: "Home Page" }) {
+        copyBlock4 {
           headline
+          _rawContent
         }
       }
     }
@@ -61,8 +61,13 @@ export const CallToActionSection = () => {
   return (
     <SectionContainer>
       <ContentContainer>
-        <MainPageHeadline>{data.ctaCopy.frontmatter.headline}</MainPageHeadline>
-        <div dangerouslySetInnerHTML={{ __html: data.ctaCopy.html }} />
+        <MainPageHeadline>
+          {data.callToActionCopy.copyBlock4.headline}
+        </MainPageHeadline>
+        <BlockContent
+          blocks={data.callToActionCopy.copyBlock4._rawContent}
+          serializer={blockContentSerializer}
+        />
         <LeadForm />
         <CardShadow />
         <CardTest gradientId="shortCallToActionSection" />

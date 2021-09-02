@@ -6,7 +6,7 @@ import { MobileLayout } from "./layouts/MobileLayout";
 import { TabletLayout } from "./layouts/TabletLayout";
 import { IpadProAndAboveLayout } from "./layouts/IpadProAndAboveLayout";
 import { useMatchMedia } from "../../../hooks/useMatchMedia";
-import { WhoAreWeSectionData } from "../../../types/sections";
+import { WhoWeAreSectionData } from "../../../types/pages";
 
 export interface WhoWeAreSectionProps {
   headline: string;
@@ -16,20 +16,17 @@ export interface WhoWeAreSectionProps {
 }
 
 export const WhoAreWeSection = () => {
-  const data: WhoAreWeSectionData = useStaticQuery(graphql`
+  const data: WhoWeAreSectionData = useStaticQuery(graphql`
     query {
-      mobileImage: file(
-        relativePath: { eq: "train-like-athlete-group-720x720.jpg" }
-      ) {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      aboveMobileImage: file(
-        relativePath: { eq: "train-like-athlete-group-1440x700.jpg" }
-      ) {
-        childImageSharp {
-          gatsbyImageData
+      whoWeAreImage: sanityMarketingPage(headline1: { eq: "Home Page" }) {
+        standardImage1 {
+          standardImage4 {
+            string1 {
+              asset {
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+              }
+            }
+          }
         }
       }
       headline: markdownRemark(frontmatter: { title: { eq: "who-are-we" } }) {
@@ -46,21 +43,30 @@ export const WhoAreWeSection = () => {
   const activeLayout = isAboveTablet ? (
     <IpadProAndAboveLayout
       headline={data.headline.frontmatter.headline}
-      imageData={data.mobileImage.childImageSharp.gatsbyImageData}
+      imageData={
+        data.whoWeAreImage.standardImage1.standardImage4.string1.asset
+          .gatsbyImageData
+      }
       altTag="Group of members after outdoor workout"
       titleTag="Smiling After Outdoor Workout"
     />
   ) : isAboveMobile && !isAboveTablet ? (
     <TabletLayout
       headline={data.headline.frontmatter.headline}
-      imageData={data.mobileImage.childImageSharp.gatsbyImageData}
+      imageData={
+        data.whoWeAreImage.standardImage1.standardImage4.string1.asset
+          .gatsbyImageData
+      }
       altTag="Group of members after outdoor workout"
       titleTag="Smiling After Outdoor Workout"
     />
   ) : (
     <MobileLayout
       headline={data.headline.frontmatter.headline}
-      imageData={data.mobileImage.childImageSharp.gatsbyImageData}
+      imageData={
+        data.whoWeAreImage.standardImage1.standardImage4.string1.asset
+          .gatsbyImageData
+      }
       altTag="Group of members after outdoor workout"
       titleTag="Smiling After Outdoor Workout"
     />

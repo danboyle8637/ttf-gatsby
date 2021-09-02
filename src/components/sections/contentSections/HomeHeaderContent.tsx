@@ -8,7 +8,7 @@ import { HeaderSectionHeadlineContent } from "../../../types/content";
 import { sizes } from "../../../styles/sizes";
 
 const SectionContainer = styled.div`
-  padding: 40px 12px;
+  padding: 80px 12px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;

@@ -1,14 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { MainPageHeadline } from "../../../../styles/typography";
+import { MainSectionHeadline } from "../../../../styles/typography";
 import { AboveMobileSectionImage } from "../../../images/sectionImages/AboveMobileSectionImage";
 import { AboveMobileSectionContentContainer } from "../../../content/AboveMobileSectionContentContainer";
 import { ContentSection } from "../ContentSection";
 import { WhoWeAreSectionProps } from "../index";
 
 const SectionContainer = styled.section`
-  padding: 0 12px;
+  padding: 80px 12px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -53,7 +53,7 @@ export const TabletLayout: React.FC<WhoWeAreSectionProps> = ({
   return (
     <SectionContainer>
       <HeadlineContainer>
-        <MainPageHeadline>{headline}</MainPageHeadline>
+        <MainSectionHeadline>{headline}</MainSectionHeadline>
       </HeadlineContainer>
       <ContentStack style={layoutStyles}>
         <AboveMobileSectionImage

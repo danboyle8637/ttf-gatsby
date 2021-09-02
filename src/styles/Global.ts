@@ -83,7 +83,7 @@ export const GlobalStyles = createGlobalStyle`
   p {
     margin: 0;
     padding: 0;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: var(--paragraph-font-size, 1.7rem);
     color: var(--paragraph-color, var(--text-white));
@@ -128,18 +128,6 @@ export const GlobalStyles = createGlobalStyle`
     font-size: var(--list-font-size, 1.7rem);
     line-height: 1.8;
     color: var(--list-color, var(--text-white));
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: "";
-      background-image: url("/svgs/kettlebell-bullet-point.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      width: 20px;
-      height: 20px;
-      transform: translate(-140%, 20%);
-    }
     ${sizes.aboveTablet} {
       font-size: 2rem;
     }

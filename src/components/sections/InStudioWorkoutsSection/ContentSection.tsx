@@ -2,7 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 
-import { MarkdownContent } from "../../../types/content";
+import { BlockContent } from "../../sanity/components/BlockContent";
+import { blockContentSerializer } from "../../sanity/components/Serializer";
+import { InStudioTrainingCopyData } from "../../../types/pages";
 import { sizes } from "../../../styles/sizes";
 
 const SectionContainer = styled.div`
@@ -17,19 +19,22 @@ const SectionContainer = styled.div`
 `;
 
 export const ContentSection = () => {
-  const data: MarkdownContent = useStaticQuery(graphql`
+  const data: InStudioTrainingCopyData = useStaticQuery(graphql`
     query {
-      content: markdownRemark(
-        frontmatter: { title: { eq: "in-studio-group-training" } }
-      ) {
-        html
+      inStudioCopy: sanityMarketingPage(headline1: { eq: "Home Page" }) {
+        copyBlock2 {
+          _rawContent
+        }
       }
     }
   `);
 
   return (
     <SectionContainer>
-      <div dangerouslySetInnerHTML={{ __html: data.content.html }} />
+      <BlockContent
+        blocks={data.inStudioCopy.copyBlock2._rawContent}
+        serializer={blockContentSerializer}
+      />
     </SectionContainer>
   );
 };

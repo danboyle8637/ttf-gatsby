@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 
 import { ImageHeadlineOverlay } from "../../images/ImageHeadlineOverlay";
-import { DoubleImageSectionData } from "../../../types/images";
+import { PostHeadlineImageData } from "../../../types/pages";
 import { useMatchMedia } from "../../../hooks/useMatchMedia";
 import { sizes } from "../../../styles/sizes";
 
 const SectionContainer = styled.section`
+  padding: 40px 0 80px 0;
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
@@ -37,16 +38,28 @@ const ImageContainer = styled.div`
 `;
 
 export const PostHeadlineImageSection = () => {
-  const data: DoubleImageSectionData = useStaticQuery(graphql`
+  const data: PostHeadlineImageData = useStaticQuery(graphql`
     query {
-      image1: file(relativePath: { eq: "lisa-battle-ropes-720x720.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-        }
-      }
-      image2: file(relativePath: { eq: "jessica-flex-720x720.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+      pageImages: sanityMarketingPage(headline1: { eq: "Home Page" }) {
+        standardImage1 {
+          string1
+          string2
+          standardImage1 {
+            string1
+            string2
+            standardImage1 {
+              asset {
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+              }
+            }
+          }
+          standardImage2 {
+            string1 {
+              asset {
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+              }
+            }
+          }
         }
       }
       headlines: markdownRemark(
@@ -76,18 +89,24 @@ export const PostHeadlineImageSection = () => {
     <SectionContainer>
       <ImageContainer style={image1Styles}>
         <ImageHeadlineOverlay
-          image={data.image1.childImageSharp.gatsbyImageData}
-          altTag="Lisa rocking out battle ropes"
-          titleTag="Battle Ropes for Cardio"
+          image={
+            data.pageImages.standardImage1.standardImage1.standardImage1.asset
+              .gatsbyImageData
+          }
+          altTag={data.pageImages.standardImage1.string2}
+          titleTag={data.pageImages.standardImage1.string1}
           headline={data.headlines.frontmatter.image1Headline}
           headlineWidth={isAboveMobile ? 80 : 100}
         />
       </ImageContainer>
       <ImageContainer style={image2Styles}>
         <ImageHeadlineOverlay
-          image={data.image2.childImageSharp.gatsbyImageData}
-          altTag="Jessica flexing during a tough workout"
-          titleTag="Flexing And Feeling Strong"
+          image={
+            data.pageImages.standardImage1.standardImage2.string1.asset
+              .gatsbyImageData
+          }
+          altTag={data.pageImages.standardImage1.standardImage1.string2}
+          titleTag={data.pageImages.standardImage1.standardImage1.string1}
           headline={data.headlines.frontmatter.image2Headline}
           textAlignHeadline="end"
         />

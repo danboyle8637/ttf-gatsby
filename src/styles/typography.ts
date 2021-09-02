@@ -37,6 +37,16 @@ export const MainPageHeadline = styled.h2`
   }
 `;
 
+export const MainSectionHeadline = styled(MainPageHeadline)`
+  font-size: 4rem;
+  ${sizes.aboveIphone11Pro} {
+    font-size: 4.4rem;
+  }
+  ${sizes.aboveMobile} {
+    font-size: 5rem;
+  }
+`;
+
 const commonCallOutHeadlineStyles = css`
   color: var(--call-out-color, var(--base-white));
   text-transform: uppercase;
@@ -67,6 +77,7 @@ export const TestimonialHeadline = styled.h4`
 `;
 
 export const BoldLabel = styled.p`
+  padding-bottom: 16px;
   font-size: var(--label-font-size, 1.3rem);
   font-weight: 700;
   color: var(--label-color, var(--base-white));

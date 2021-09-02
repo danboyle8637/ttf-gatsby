@@ -10,7 +10,17 @@ interface HeaderLogoProps {
 }
 
 const LogoContainer = styled.div`
+  margin-top: -30px;
   width: 100%;
+  ${sizes.aboveMobile} {
+    margin-top: -50px;
+  }
+  ${sizes.aboveTablet} {
+    margin-top: -70px;
+  }
+  ${sizes.aboveIpadPro} {
+    margin-top: -90px;
+  }
 `;
 
 const LogoStack = styled.div`
@@ -24,16 +34,25 @@ const LogoStack = styled.div`
   ${sizes.aboveMobile} {
     transform: translate(10px, 50px) rotate(-6grad);
   }
+  ${sizes.aboveTablet} {
+    transform: translate(10px, 70px) rotate(-6grad);
+  }
   ${sizes.aboveIpadPro} {
-    transform: translate(240px, 60px) rotate(-5.5grad);
+    transform: translate(180px, 80px) rotate(-6.3grad);
   }
   ${sizes.aboveLaptop} {
-    transform: translate(240px, 80px) rotate(-5.5grad);
+    transform: translate(240px, 100px) rotate(-6.3grad);
   }
 `;
 
 const Logo = styled(TTFLogo)`
-  width: 318px;
+  width: 340px;
+  ${sizes.aboveMobile} {
+    width: 400px;
+  }
+  ${sizes.aboveTablet} {
+    width: 460px;
+  }
 `;
 
 export const HeaderLogo: React.FC<HeaderLogoProps> = ({ tagline }) => {

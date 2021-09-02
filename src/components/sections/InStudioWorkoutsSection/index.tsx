@@ -6,7 +6,7 @@ import { MobileLayout } from "./layouts/MobileLayout";
 import { TabletLayout } from "./layouts/TabletLayout";
 import { IpadProAndAboveLayout } from "./layouts/IpadProAndAboveLayout";
 import { useMatchMedia } from "../../../hooks/useMatchMedia";
-import { HeaderImage } from "../../../types/images";
+import { InStudioTrainingSectionData } from "../../../types/pages";
 
 export interface InStudioWorkoutSectionProps {
   headline1: string;
@@ -17,20 +17,21 @@ export interface InStudioWorkoutSectionProps {
 }
 
 export const InStudioWorkoutSection = () => {
-  const data: HeaderImage = useStaticQuery(graphql`
+  const data: InStudioTrainingSectionData = useStaticQuery(graphql`
     query {
-      mobileImage: file(
-        relativePath: { eq: "small-group-training-720x720.jpg" }
-      ) {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      aboveMobileImage: file(
-        relativePath: { eq: "small-group-training-1440x700.jpg" }
-      ) {
-        childImageSharp {
-          gatsbyImageData
+      sectionImages: sanityMarketingPage(headline1: { eq: "Home Page" }) {
+        standardImage2 {
+          string1
+          string2
+          standardImage1 {
+            string1
+            string2
+            standardImage1 {
+              asset {
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+              }
+            }
+          }
         }
       }
       headline: markdownRemark(
@@ -47,29 +48,40 @@ export const InStudioWorkoutSection = () => {
   const isAboveMobile = useMatchMedia();
   const isAboveTablet = useMatchMedia(960);
 
+  console.log(data.sectionImages.standardImage2.string2);
+
   const activeLayout = isAboveTablet ? (
     <IpadProAndAboveLayout
       headline1={data.headline.frontmatter.headline1}
       headline2={data.headline.frontmatter.headline2}
-      imageData={data.mobileImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members doing step ups on a box"
-      titleTag="Steps Ups On a Box"
+      imageData={
+        data.sectionImages.standardImage2.standardImage1.standardImage1.asset
+          .gatsbyImageData
+      }
+      altTag={data.sectionImages.standardImage2.string2}
+      titleTag={data.sectionImages.standardImage2.string1}
     />
   ) : isAboveMobile && !isAboveTablet ? (
     <TabletLayout
       headline1={data.headline.frontmatter.headline1}
       headline2={data.headline.frontmatter.headline2}
-      imageData={data.mobileImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members doing step ups on a box"
-      titleTag="Steps Ups On a Box"
+      imageData={
+        data.sectionImages.standardImage2.standardImage1.standardImage1.asset
+          .gatsbyImageData
+      }
+      altTag={data.sectionImages.standardImage2.string2}
+      titleTag={data.sectionImages.standardImage2.string1}
     />
   ) : (
     <MobileLayout
       headline1={data.headline.frontmatter.headline1}
       headline2={data.headline.frontmatter.headline2}
-      imageData={data.mobileImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members doing step ups on a box"
-      titleTag="Steps Ups On a Box"
+      imageData={
+        data.sectionImages.standardImage2.standardImage1.standardImage1.asset
+          .gatsbyImageData
+      }
+      altTag={data.sectionImages.standardImage2.string2}
+      titleTag={data.sectionImages.standardImage2.string1}
     />
   );
 

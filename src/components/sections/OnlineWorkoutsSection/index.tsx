@@ -6,7 +6,7 @@ import { MobileLayout } from "./layouts/MobileLayout";
 import { TabletLayout } from "./layouts/TabletLayout";
 import { IpadProAndAboveLayout } from "./layouts/IpadProAndAboveLayout";
 import { useMatchMedia } from "../../../hooks/useMatchMedia";
-import { OnlineWorkoutsSectionData } from "../../../types/sections";
+import { OnlineWorkoutsSectionData } from "../../../types/pages";
 
 export interface OnlineWorkoutsSectionProps {
   headline1: string;
@@ -19,9 +19,19 @@ export interface OnlineWorkoutsSectionProps {
 export const OnlineWorkoutsSection = () => {
   const data: OnlineWorkoutsSectionData = useStaticQuery(graphql`
     query {
-      sectionImage: file(relativePath: { eq: "online-workouts-720x720.jpg" }) {
-        childImageSharp {
-          gatsbyImageData
+      sectionImages: sanityMarketingPage(headline1: { eq: "Home Page" }) {
+        standardImage2 {
+          standardImage1 {
+            string1
+            string2
+          }
+          standardImage2 {
+            string1 {
+              asset {
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+              }
+            }
+          }
         }
       }
       headline: markdownRemark(
@@ -42,25 +52,34 @@ export const OnlineWorkoutsSection = () => {
     <IpadProAndAboveLayout
       headline1={data.headline.frontmatter.headline1}
       headline2={data.headline.frontmatter.headline2}
-      imageData={data.sectionImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members after outdoor workout"
-      titleTag="Smiling After Outdoor Workout"
+      imageData={
+        data.sectionImages.standardImage2.standardImage2.string1.asset
+          .gatsbyImageData
+      }
+      altTag={data.sectionImages.standardImage2.standardImage1.string2}
+      titleTag={data.sectionImages.standardImage2.standardImage1.string1}
     />
   ) : isAboveMobile && !isAboveTablet ? (
     <TabletLayout
       headline1={data.headline.frontmatter.headline1}
       headline2={data.headline.frontmatter.headline2}
-      imageData={data.sectionImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members after outdoor workout"
-      titleTag="Smiling After Outdoor Workout"
+      imageData={
+        data.sectionImages.standardImage2.standardImage2.string1.asset
+          .gatsbyImageData
+      }
+      altTag={data.sectionImages.standardImage2.standardImage1.string2}
+      titleTag={data.sectionImages.standardImage2.standardImage1.string1}
     />
   ) : (
     <MobileLayout
       headline1={data.headline.frontmatter.headline1}
       headline2={data.headline.frontmatter.headline2}
-      imageData={data.sectionImage.childImageSharp.gatsbyImageData}
-      altTag="Group of members after outdoor workout"
-      titleTag="Smiling After Outdoor Workout"
+      imageData={
+        data.sectionImages.standardImage2.standardImage2.string1.asset
+          .gatsbyImageData
+      }
+      altTag={data.sectionImages.standardImage2.standardImage1.string2}
+      titleTag={data.sectionImages.standardImage2.standardImage1.string1}
     />
   );
 

@@ -13,40 +13,52 @@ import { OnlineWorkoutsSection } from "../components/sections/OnlineWorkoutsSect
 import { CallToActionSection } from "../components/sections/CallToActionSection";
 import { GatsbyImage } from "../types/images";
 import { Testimonial } from "../types/content";
+import { HomePageData } from "../types/pages";
+import { Seo } from "../components/content/Seo";
 
-interface HomeData {
-  data: {
-    mobileHeaderImage: GatsbyImage;
-    aboveMobileHeaderImage: GatsbyImage;
-    testimonials1: { nodes: Testimonial[] };
-  };
-}
-
-const IndexPage: React.FC<HomeData> = ({ data }) => {
+const IndexPage: React.FC<HomePageData> = ({ data }) => {
   return (
-    <main>
-      <PageHeaderImage
-        mobileImage={data.mobileHeaderImage.childImageSharp.gatsbyImageData}
-        aboveMobileImage={
-          data.aboveMobileHeaderImage.childImageSharp.gatsbyImageData
+    <>
+      <Seo
+        title={data.seo.frontmatter.pageTitle}
+        description={data.seo.frontmatter.description}
+        socialHeadline={data.socialShareInfo.socialShareInformation.headline1}
+        socialDescription={
+          data.socialShareInfo.socialShareInformation.description1
         }
-        altTag="Group of women flexing after a tough workout"
-        titleTag="This Time Fitness"
-        tagline="Strength Training for Women"
+        socialImage={
+          data.socialShareInfo.socialShareInformation.standardImage1.asset.url
+        }
+        socialSlug={data.socialShareInfo.socialShareInformation.string1.current}
       />
-      <HomeHeaderContentSection />
-      <PostHeadlineImageSection />
-      <CallOutSection />
-      <WhoAreWeSection />
-      <InStudioWorkoutSection />
-      <ClassScheduleSection />
-      <OnlineWorkoutsSection />
-      <CallToActionSection />
-      {/* <TestimonialSection
+      <main>
+        <PageHeaderImage
+          mobileImage={
+            data.headerSection.backgroundImage1.mobileImage.string1.asset
+              .gatsbyImageData
+          }
+          aboveMobileImage={
+            data.headerSection.backgroundImage1.laptopImage.string1.asset
+              .gatsbyImageData
+          }
+          altTag={data.headerSection.backgroundImage1.string2}
+          titleTag={data.headerSection.backgroundImage1.string1}
+          tagline="Strength Training for Women"
+        />
+        <HomeHeaderContentSection />
+        <PostHeadlineImageSection />
+        <CallOutSection />
+        <WhoAreWeSection />
+        <InStudioWorkoutSection />
+        <ClassScheduleSection />
+        <OnlineWorkoutsSection />
+        <CallToActionSection />
+        {/* <TestimonialSection
         headline="Plus hangout with an amazing community of women!"
         testimonials={data.testimonials1.nodes}
       /> */}
-    </main>
+      </main>
+    </>
   );
 };
 
@@ -54,6 +66,51 @@ export default IndexPage;
 
 export const homeData = graphql`
   query {
+    seo: markdownRemark(frontmatter: { title: { eq: "seo-home" } }) {
+      frontmatter {
+        pageTitle
+        description
+      }
+    }
+    socialShareInfo: sanityMarketingPage(headline1: { eq: "Home Page" }) {
+      socialShareInformation {
+        headline1
+        string1 {
+          current
+        }
+        description1
+        standardImage1 {
+          asset {
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+          }
+        }
+      }
+    }
+    headerSection: sanityMarketingPage(headline1: { eq: "Home Page" }) {
+      backgroundImage1 {
+        string1
+        string2
+        mobileImage {
+          string1 {
+            asset {
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+            }
+          }
+        }
+        laptopImage {
+          string1 {
+            asset {
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+/*
+query {
     mobileHeaderImage: file(
       relativePath: { eq: "ttf-group-flex-600x600.jpg" }
     ) {
@@ -85,4 +142,4 @@ export const homeData = graphql`
       }
     }
   }
-`;
+*/
