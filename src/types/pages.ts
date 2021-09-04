@@ -269,11 +269,47 @@ export interface DanCopy {
   };
 }
 
-export interface PricePageData {
+export interface PriceHeaderData {
   pricingCopy: {
     copyBlock1: {
       headline: string;
       _rawContent: [];
+    };
+  };
+}
+
+export interface PricePageData {
+  data: {
+    seo: {
+      frontmatter: {
+        pageTitle: string;
+        description: string;
+      };
+    };
+    socialShareInfo: {
+      socialShareInformation: {
+        headline1: string;
+        string1: {
+          current: string;
+        };
+        description1: string;
+        standardImage1: {
+          asset: {
+            url: string;
+          };
+        };
+      };
+    };
+  };
+}
+
+export interface ContactPageData {
+  data: {
+    seo: {
+      frontmatter: {
+        pageTitle: string;
+        description: string;
+      };
     };
   };
 }

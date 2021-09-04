@@ -7,7 +7,7 @@ import { LogoSubheadline } from "../../../styles/typography";
 import { MainPageHeadline } from "../../../styles/typography";
 import { BlockContent } from "../../sanity/components/BlockContent";
 import { blockContentSerializer } from "../../sanity/components/Serializer";
-import { PricePageData } from "../../../types/pages";
+import { PriceHeaderData } from "../../../types/pages";
 import { sizes } from "../../../styles/sizes";
 
 const SectionContainer = styled.section`
@@ -40,7 +40,7 @@ const Logo = styled(TTFLogo)`
 `;
 
 export const HeaderSection = () => {
-  const data: PricePageData = useStaticQuery(graphql`
+  const data: PriceHeaderData = useStaticQuery(graphql`
     query {
       pricingCopy: sanityMarketingPage(headline1: { eq: "Pricing Page" }) {
         copyBlock1 {

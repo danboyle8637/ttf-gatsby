@@ -3,6 +3,14 @@ import styled from "styled-components";
 
 import { useIsHovering } from "../../hooks/useIsHovering";
 
+type ButtonType = "button" | "submit";
+
+interface PrimaryButtonProps {
+  type: ButtonType;
+  isDisabled: boolean;
+  handleClick?: () => void;
+}
+
 const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -30,7 +38,7 @@ const TopLayerButton = styled.button`
   border: none;
   width: 100%;
   height: 100%;
-  cursor: pointer;
+  cursor: var(--button-cursor, pointer);
   box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.4);
   transition: box-shadow 300ms ease-in-out;
   z-index: 1;
@@ -48,20 +56,35 @@ const BottomLayer = styled.div`
   pointer-events: none;
 `;
 
-export const PrimaryButton: React.FC = ({ children }) => {
+export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+  type,
+  isDisabled,
+  handleClick,
+  children,
+}) => {
   const { isHovering, toggleIsHovering } = useIsHovering();
 
   const bottomStyles = {
+    "--button-background": isDisabled
+      ? "var(--accent-blue-dark)"
+      : "var(--accent-pink)",
+    "--button-cursor": isDisabled ? "not-allowed" : "pointer",
     "--button-transform": isHovering
       ? "translateY(0) scale(1.025, 1.15)"
       : "translateY(4px) scale(1, 1)",
     "--button-border-radius": isHovering ? "22px" : "20px",
+    "--bottom-layer-background": isDisabled
+      ? "var(--accent-purple)"
+      : "var(--accent-blue)",
   } as React.CSSProperties;
 
   return (
-    <ButtonContainer>
-      <BottomLayer style={bottomStyles} />
+    <ButtonContainer style={bottomStyles}>
+      <BottomLayer />
       <TopLayerButton
+        type={type}
+        onClick={handleClick}
+        disabled={isDisabled}
         onMouseOver={toggleIsHovering}
         onMouseLeave={toggleIsHovering}
       >

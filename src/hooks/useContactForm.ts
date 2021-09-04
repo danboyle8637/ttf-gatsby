@@ -6,9 +6,13 @@ import {
   isRequiredValidationRules,
   emailValidationRules,
 } from "../utils/validation/forms";
-import { capitalizeName } from "../utils/utilityFunctions";
+import { capitalizeName, updateOptions } from "../utils/utilityFunctions";
 
-export type CallToActionInputName = "firstName" | "emailAddress" | "message";
+export type CallToActionInputName =
+  | "firstName"
+  | "emailAddress"
+  | "reason"
+  | "message";
 
 interface InputValue {
   value: string;
@@ -19,6 +23,57 @@ interface InputOptions {
   initial: boolean;
   touched: boolean;
 }
+
+export interface ContactOption {
+  id: number;
+  name: string;
+  label: string;
+  value: string;
+  isChecked: boolean;
+}
+
+interface RadioInputValue {
+  value: string;
+  options: ContactOption[];
+}
+
+const contactOptions: ContactOption[] = [
+  {
+    id: 0,
+    name: "reason",
+    label: "Joining the In Studio Classes",
+    value: "joining in studio classes",
+    isChecked: true,
+  },
+  {
+    id: 1,
+    name: "reason",
+    label: "Joining the Online Classes",
+    value: "joining online classes",
+    isChecked: false,
+  },
+  {
+    id: 2,
+    name: "reason",
+    label: "Private Nutrition Coaching",
+    value: "private nutrition coaching",
+    isChecked: false,
+  },
+  {
+    id: 3,
+    name: "reason",
+    label: "Private Personal Training",
+    value: "private personal training",
+    isChecked: false,
+  },
+  {
+    id: 4,
+    name: "reason",
+    label: "Other",
+    value: "other",
+    isChecked: false,
+  },
+];
 
 export const useContactForm = () => {
   const [firstName, setFirstNameValue] = useState<InputValue>({
@@ -41,6 +96,11 @@ export const useContactForm = () => {
     touched: false,
   });
 
+  const [contactReason, setContactReason] = useState<RadioInputValue>({
+    value: "",
+    options: contactOptions,
+  });
+
   const [message, setMessage] = useState({
     value: "",
     valid: false,
@@ -61,12 +121,15 @@ export const useContactForm = () => {
       setEmailAddressOptions({ initial: true, touched: false });
       setMessage({ value: "", valid: false });
       setMessageOptions({ initial: true, touched: false });
+      setContactReason({ value: "", options: contactOptions });
     }
 
     setClearInput(false);
   }, [clearInput]);
 
-  const updateInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const updateInputValue = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const value = event.target.value;
     const name = event.target.name as CallToActionInputName;
 
@@ -89,6 +152,14 @@ export const useContactForm = () => {
         });
         break;
       }
+      case "reason": {
+        const newOptions = updateOptions(contactOptions, value);
+        setContactReason({
+          value: value,
+          options: [...newOptions],
+        });
+        break;
+      }
       case "message": {
         const valid = formValidator(value, isRequiredValidationRules);
         setMessage({
@@ -103,7 +174,9 @@ export const useContactForm = () => {
     }
   };
 
-  const updateInputOptions = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const updateInputOptions = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const name = event.target.name as CallToActionInputName;
 
     switch (name) {
@@ -139,6 +212,7 @@ export const useContactForm = () => {
     firstNameOptions,
     emailAddress,
     emailAddressOptions,
+    contactReason,
     message,
     messageOptions,
     updateInputValue,

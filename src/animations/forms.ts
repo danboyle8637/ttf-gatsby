@@ -1,4 +1,4 @@
-import { gsap, Power3, Linear } from "gsap";
+import { gsap, Power3, Linear, Back } from "gsap";
 
 export const circleToggleSwitchOnAni = (toggle: HTMLSpanElement) => {
   gsap.to(toggle, { duration: 0.3, x: 45, ease: Power3.easeIn });
@@ -189,4 +189,14 @@ export const moveLabelAboveTextareaAni = (
       reversed: reverse,
     }
   );
+};
+
+// Basic Radio Input
+
+export const basicRadioIsChecked = (dot: HTMLDivElement) => {
+  gsap.to(dot, { duration: 0.2, scale: 1, autoAlpha: 1, ease: Back.easeIn });
+};
+
+export const basicRadioIsNotChecked = (dot: HTMLDivElement) => {
+  gsap.to(dot, { duration: 0.2, scale: 0, autoAlpha: 0, ease: Power3.easeIn });
 };

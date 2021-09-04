@@ -1,3 +1,5 @@
+import { ContactOption } from "../hooks/useContactForm";
+
 export const capitalizeName = (name: string) => {
   const nameArray = name.split("");
   const firstChar = nameArray.shift()?.toUpperCase();
@@ -10,4 +12,20 @@ export const capitalizeName = (name: string) => {
   } else {
     return "";
   }
+};
+
+export const updateOptions = (
+  optionsArray: ContactOption[],
+  value: string
+): ContactOption[] => {
+  return optionsArray.map((option) => {
+    if (option.value === value) {
+      option.isChecked = !option.isChecked;
+      return option;
+    } else if (option.isChecked) {
+      option.isChecked = !option.isChecked;
+      return option;
+    }
+    return option;
+  });
 };
