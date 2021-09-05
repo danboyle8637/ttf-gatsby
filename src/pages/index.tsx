@@ -110,6 +110,7 @@ export const homeData = graphql`
       filter: { devTitle: { in: ["Amanda R", "Sam", "Tiffany", "Stephanie"] } }
     ) {
       nodes {
+        id
         customerName
         customerLocation
         testimonialHeadline

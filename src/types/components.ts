@@ -26,3 +26,18 @@ export interface PricingCards {
     ];
   };
 }
+
+interface NavLink {
+  node: {
+    label: string;
+    slug: string;
+  };
+}
+
+export interface NavigationLinks {
+  navigation: {
+    frontmatter: {
+      nav: NavLink[];
+    };
+  };
+}

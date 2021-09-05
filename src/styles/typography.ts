@@ -9,10 +9,6 @@ const gradientHeadlineStyles = css`
   -webkit-text-fill-color: transparent;
 `;
 
-export const buttonLabel = css``;
-
-export const inputLabel = css``;
-
 export const LogoSubheadline = styled.h1`
   font-size: 1.8rem;
   color: var(--base-white);
@@ -45,6 +41,12 @@ export const MainSectionHeadline = styled(MainPageHeadline)`
   ${sizes.aboveMobile} {
     font-size: 5rem;
   }
+`;
+
+export const BlogHeadline = styled.h1`
+  font-size: 4rem;
+  background: linear-gradient(to right, var(--base-white), var(--accent-blue));
+  ${gradientHeadlineStyles}
 `;
 
 const commonCallOutHeadlineStyles = css`
@@ -85,5 +87,21 @@ export const BoldLabel = styled.p`
   line-height: 1;
   ${sizes.aboveMobile} {
     font-size: 1.6rem;
+  }
+`;
+
+export const NavigationLabel = styled.div`
+  & a {
+    padding: 0;
+    font-family: inherit;
+    font-size: var(--label-font-size, 1.6rem);
+    font-weight: 700;
+    color: var(--label-color, var(--base-white));
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0.1rem;
+    ${sizes.aboveMobile} {
+      font-size: var(--label-font-size, 1.6rem);
+    }
   }
 `;

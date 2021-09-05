@@ -21,9 +21,9 @@ export const TTFLogo: React.FC<GradientSVGProps> = ({
     >
       <path id="ttf-logo-container" fill="none" d="M0 0h379.462v144.184H0z" />
       <path
+        style={{ fill: "var(--logo-t-fill, #f552f2)" }}
         id="t-letter"
         d="M43.634 39.39H3.036V2.881h128.243V39.39H90.457v102.282H43.634V39.39z"
-        fill="#f552f2"
       />
       <path
         id="tf-letters"
@@ -40,9 +40,18 @@ export const TTFLogo: React.FC<GradientSVGProps> = ({
           gradientUnits="userSpaceOnUse"
           gradientTransform="scale(208.2026) rotate(28.409 .302 1.31)"
         >
-          <stop offset="0" stopColor="#29c9f5" />
-          <stop offset=".48" stopColor="#4394f8" />
-          <stop offset="1" stopColor="#8c00ff" />
+          <stop
+            style={{ stopColor: "var(--logo-stop-color-1, #29c9f5)" }}
+            offset="0"
+          />
+          <stop
+            style={{ stopColor: "var(--logo-stop-color-2, #4394f8)" }}
+            offset=".48"
+          />
+          <stop
+            style={{ stopColor: "var(--logo-stop-color-2, #8c00ff)" }}
+            offset="1"
+          />
         </linearGradient>
       </defs>
     </svg>

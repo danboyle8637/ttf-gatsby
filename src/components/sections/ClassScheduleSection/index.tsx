@@ -1,11 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
 
 import { MainPageHeadline } from "../../../styles/typography";
 import { ClassSchedule } from "./ClassSchedule";
 import { ResponsiveContactInfo } from "../../shared/ResponsiveContactInfo";
-import { ContactContent } from "../../../types/content";
 import { sizes } from "../../../styles/sizes";
 
 const SectionContainer = styled.section`
@@ -33,34 +31,12 @@ const ContentContainer = styled.div`
 `;
 
 export const ClassScheduleSection = () => {
-  const data: ContactContent = useStaticQuery(graphql`
-    query {
-      contactInfo: markdownRemark(
-        frontmatter: { title: { eq: "contact-info" } }
-      ) {
-        frontmatter {
-          addressLine1
-          addressLine2
-          addressLine3
-          phoneNumber
-          emailAddress
-        }
-      }
-    }
-  `);
-
   return (
     <SectionContainer>
       <ContentContainer>
         <MainPageHeadline>Full Schedule Limited Spots!</MainPageHeadline>
         <ClassSchedule />
-        <ResponsiveContactInfo
-          addressLine1={data.contactInfo.frontmatter.addressLine1}
-          addressLine2={data.contactInfo.frontmatter.addressLine2}
-          addressLine3={data.contactInfo.frontmatter.addressLine3}
-          phoneNumber={data.contactInfo.frontmatter.phoneNumber}
-          emailAddress={data.contactInfo.frontmatter.emailAddress}
-        />
+        <ResponsiveContactInfo />
       </ContentContainer>
     </SectionContainer>
   );

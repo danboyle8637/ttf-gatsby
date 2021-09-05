@@ -1,18 +1,12 @@
 import * as React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
 import { ContactInfoCard } from "../cards/ContactInfoCard";
 import { PrimaryButton } from "../buttons/PrimaryButton";
 import { BoldLabel } from "../../styles/typography";
+import { ContactContent } from "../../types/content";
 import { sizes } from "../../styles/sizes";
-
-interface ContactInfoProps {
-  addressLine1: string;
-  addressLine2: string;
-  addressLine3: string;
-  phoneNumber: string;
-  emailAddress: string;
-}
 
 const SectionContainer = styled.div`
   padding-top: 40px;
@@ -53,31 +47,45 @@ const ClickToCall = styled.a`
   text-decoration: none;
 `;
 
-export const ResponsiveContactInfo: React.FC<ContactInfoProps> = ({
-  addressLine1,
-  addressLine2,
-  addressLine3,
-  phoneNumber,
-  emailAddress,
-}) => {
+export const ResponsiveContactInfo: React.FC = () => {
+  const data: ContactContent = useStaticQuery(graphql`
+    query {
+      contactInfo: markdownRemark(
+        frontmatter: { title: { eq: "contact-info" } }
+      ) {
+        frontmatter {
+          addressLine1
+          addressLine2
+          addressLine3
+          phoneNumber
+          emailAddress
+        }
+      }
+    }
+  `);
+
   return (
     <SectionContainer>
       <ContactInfoContainer>
         <ContactInfoCard iconType="location">
-          <BoldLabel>{addressLine1}</BoldLabel>
-          <BoldLabel>{addressLine2}</BoldLabel>
-          <BoldLabel>{addressLine3}</BoldLabel>
+          <BoldLabel>{data.contactInfo.frontmatter.addressLine1}</BoldLabel>
+          <BoldLabel>{data.contactInfo.frontmatter.addressLine2}</BoldLabel>
+          <BoldLabel>{data.contactInfo.frontmatter.addressLine3}</BoldLabel>
         </ContactInfoCard>
         <PhoneAndEmailContainer>
           <ContactInfoCard iconType="phone" alignItems="center">
-            <ClickToCall href="tel:+1-843-437-6700">{phoneNumber}</ClickToCall>
+            <ClickToCall href="tel:+1-843-437-6700">
+              {data.contactInfo.frontmatter.phoneNumber}
+            </ClickToCall>
           </ContactInfoCard>
           <ContactInfoCard iconType="email" alignItems="center">
-            <p>{emailAddress}</p>
+            <p>{data.contactInfo.frontmatter.emailAddress}</p>
           </ContactInfoCard>
         </PhoneAndEmailContainer>
       </ContactInfoContainer>
-      <PrimaryButton>FREE 14 Day Trial!</PrimaryButton>
+      <PrimaryButton type="button" isDisabled={false}>
+        FREE 14 Day Trial!
+      </PrimaryButton>
     </SectionContainer>
   );
 };

@@ -313,3 +313,27 @@ export interface ContactPageData {
     };
   };
 }
+
+interface LegalLink {
+  frontmatter: {
+    headline: string;
+    slug: string;
+  };
+}
+
+export interface LegalPageData {
+  data: {
+    markdownRemark: {
+      html: string;
+      frontmatter: {
+        headline: string;
+      };
+    };
+  };
+}
+
+export interface LegalLinks {
+  legalLinks: {
+    nodes: LegalLink[];
+  };
+}
