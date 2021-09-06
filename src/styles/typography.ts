@@ -90,18 +90,22 @@ export const BoldLabel = styled.p`
   }
 `;
 
+export const commonNavLabelStyles = css`
+  padding: 0;
+  font-family: inherit;
+  font-size: var(--label-font-size, 1.6rem);
+  font-weight: 700;
+  color: var(--label-color, var(--base-white));
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0.1rem;
+  ${sizes.aboveMobile} {
+    font-size: var(--label-font-size, 1.6rem);
+  }
+`;
+
 export const NavigationLabel = styled.div`
   & a {
-    padding: 0;
-    font-family: inherit;
-    font-size: var(--label-font-size, 1.6rem);
-    font-weight: 700;
-    color: var(--label-color, var(--base-white));
-    text-transform: uppercase;
-    line-height: 1;
-    letter-spacing: 0.1rem;
-    ${sizes.aboveMobile} {
-      font-size: var(--label-font-size, 1.6rem);
-    }
+    ${commonNavLabelStyles}
   }
 `;

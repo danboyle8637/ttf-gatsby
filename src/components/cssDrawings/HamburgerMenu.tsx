@@ -2,6 +2,9 @@ import * as React from "react";
 import { useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 
+import { FunctionalOverlay } from "../overlays/FunctionalOverlay";
+import { MobileNav } from "../navigation/MobileNav";
+import { Portal } from "../shared/Portal";
 import {
   toggleHamburgerMenuOpen,
   toggleHamburgerMenuClosed,
@@ -17,6 +20,15 @@ const MenuButton = styled.button`
   outline: none;
   width: 50px;
   height: 40px;
+  cursor: pointer;
+  &:focus {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: hsl(258, 67%, 60%);
+    outline-offset: 4px;
+  }
+  &:hover {
+  }
 `;
 
 const commonBarStyles = css`
@@ -66,10 +78,21 @@ export const HamburgerMenu = () => {
   };
 
   return (
-    <MenuButton onClick={toggleNavDrawer}>
-      <TopBar ref={topBarRef} />
-      <MiddleBar ref={middleBarRef} />
-      <BottomBar ref={bottomBarRef} />
-    </MenuButton>
+    <>
+      <MenuButton
+        type="button"
+        aria-label="Main navigation list"
+        onClick={toggleNavDrawer}
+      >
+        <TopBar ref={topBarRef} />
+        <MiddleBar ref={middleBarRef} />
+        <BottomBar ref={bottomBarRef} />
+      </MenuButton>
+      <Portal>
+        <FunctionalOverlay isOpen={isMenuOpen} toggleOverlay={toggleNavDrawer}>
+          <MobileNav toggleNavDrawer={toggleNavDrawer} />
+        </FunctionalOverlay>
+      </Portal>
+    </>
   );
 };

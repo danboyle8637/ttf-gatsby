@@ -9,5 +9,5 @@ bullet1: "Use classes within 6 months"
 bullet2: "Private Facebook group"
 bullet3: "The results you deserve!"
 buttonText: "Let's Get Fit!"
-link: "#"
+link: "https://thistimefitness.sites.zenplanner.com/retail-product.cfm?ProductId=229BEDA9-9586-4CA6-8EC5-176B62DC6F72"
 ---

@@ -1,4 +1,4 @@
-import { gsap, Power3, Back } from "gsap";
+import { gsap, Power2, Power3, Back } from "gsap";
 
 export const overlayCloseButtonAni = (
   leftCross: HTMLDivElement,
@@ -41,5 +41,26 @@ export const toastOverlayExitAni = (toast: HTMLDivElement) => {
     scale: 0.8,
     autoAlpha: 0,
     ease: Power3.easeInOut,
+  });
+};
+
+// Functional Drawer Enter and Exit Animation
+export const drawerOpenFromRightAni = (drawer: HTMLElement) => {
+  const tl = gsap.timeline();
+
+  tl.to(drawer, {
+    duration: 0.4,
+    x: 0,
+    ease: Power2.easeInOut,
+  });
+};
+
+export const drawerClosedToRightAni = (drawer: HTMLElement) => {
+  const tl = gsap.timeline();
+
+  tl.to(drawer, {
+    duration: 0.4,
+    x: "108%",
+    ease: Power2.easeInOut,
   });
 };

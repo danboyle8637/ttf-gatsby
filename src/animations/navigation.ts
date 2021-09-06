@@ -16,10 +16,9 @@ export const toggleHamburgerMenuOpen = (
     .to(
       topBar,
       {
-        duration: 0.2,
-        transformOrigin: "50% 50%",
-        y: 16.5,
-        rotation: 45,
+        duration: 0.15,
+        x: -60,
+        autoAlpha: 0,
         ease: Linear.easeNone,
       },
       "-=0.2"
@@ -27,11 +26,9 @@ export const toggleHamburgerMenuOpen = (
     .to(
       bottomBar,
       {
-        duration: 0.2,
-        transformOrigin: "50% 50%",
-        width: "100%",
-        y: -16.5,
-        rotation: 135,
+        duration: 0.15,
+        x: -60,
+        autoAlpha: 0,
         ease: Linear.easeNone,
       },
       "-=0.25"
@@ -46,20 +43,17 @@ export const toggleHamburgerMenuClosed = (
   const tl = gsap.timeline();
 
   tl.to(bottomBar, {
-    duration: 0.2,
-    transformOrigin: "50% 50%",
-    y: 0,
-    width: "80%",
-    rotation: 0,
+    duration: 0.15,
+    x: 0,
+    autoAlpha: 1,
     ease: Linear.easeNone,
   })
     .to(
       topBar,
       {
-        duration: 0.2,
-        transformOrigin: "50% 50%",
-        y: 0,
-        rotation: 0,
+        duration: 0.15,
+        x: 0,
+        autoAlpha: 1,
         ease: Linear.easeNone,
       },
       "-=0.25"

@@ -1,9 +1,7 @@
 import * as React from "react";
-import { useState, useEffect, useCallback, CSSProperties } from "react";
 import styled from "styled-components";
 
 import { HamburgerMenu } from "../cssDrawings/HamburgerMenu";
-import { Portal } from "../shared/Portal";
 
 const Header = styled.header`
   position: fixed;
@@ -14,7 +12,6 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--accent-blue-dark);
   width: 100%;
   z-index: 998;
 `;
